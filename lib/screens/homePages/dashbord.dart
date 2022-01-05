@@ -36,12 +36,12 @@ class _DashBordState extends State<DashBord> with SingleTickerProviderStateMixin
          slivers: [
            SliverAppBar(
              automaticallyImplyLeading: false,
-             forceElevated: true,
-             elevation:  3,
+
+
              brightness: Brightness.light,
              backgroundColor: Colors.white,
              title: Text(
-               'Connect-SLTS',
+               'Covid Safe',
                style: const TextStyle(
                  color: Color(0xFF4BCB1F),
                  fontSize: 18.0,
@@ -61,8 +61,11 @@ class _DashBordState extends State<DashBord> with SingleTickerProviderStateMixin
 
            SliverToBoxAdapter(
              child: InkWell(
+               onTap: (){
+                 dashBoardController.getCovidCurrentData();
+               },
                child: Container(
-
+                  child: Text("Tap"),
                ),
              ),
            ),

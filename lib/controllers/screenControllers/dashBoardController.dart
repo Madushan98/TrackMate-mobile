@@ -1,18 +1,20 @@
 import 'package:covid_safe_app/configuration/base_client.dart';
+import 'package:covid_safe_app/controllers/baseController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class DashBoardController extends GetxController {
+class DashBoardController extends GetxController with BaseController {
 
 
 
   void getCovidCurrentData() async {
-    var response = await BaseClient().get("https://www.hpb.health.gov.lk/api/get-current-statistical", '') ;
+    showLoading('Fetching data');
+    var response = await BaseClient().get("https://www.hpb.health.gov.lk/api/get-current-statistical", '').catchError(handleError) ;
 
 
     if (response == null) return ;
-
+    hideLoading();
     print(response);
 
 
@@ -24,7 +26,7 @@ class DashBoardController extends GetxController {
 
   @override
   void onInit() {
-    getCovidCurrentData();
+
     print("hello");
     super.onInit();
   }
