@@ -39,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                       labelText: "Enter your full name"
                     ),
                     validator: (value){
-                      if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)){
+                      if(value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)){
                         return "Enter your name correctly" ;
 
                       }else{
@@ -53,7 +53,7 @@ class SignUpScreen extends StatelessWidget {
                         labelText: "Enter your number (ex-+94 xxx xxx xxx)"
                     ),
                     validator: (value){
-                      if(value!.isEmpty || !RegExp(r'^[+94]*[]+$').hasMatch(value)){
+                      if(value.isEmpty || !RegExp(r'^[+94]*[]+$').hasMatch(value)){
                         return "Invalid mobile number" ;
 
                       }else{
@@ -68,7 +68,7 @@ class SignUpScreen extends StatelessWidget {
                         labelText: "Enter your E-mail "
                     ),
                     validator: (value){
-                      if(value!.isEmpty || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                      if(value.isEmpty || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
                         return "Invalid E-mail address" ;
 
                       }else{
@@ -89,9 +89,9 @@ class SignUpScreen extends StatelessWidget {
 
                         margin: EdgeInsets.only(top: 12),
                         onPressed: (){
-                          if(formKey.currentState!.validate()){
+                          if(formKey.currentState.validate()){
                             final snackBar = SnackBar(content: Text("submiting Details"));
-                            _scaffoldKey.currentState!.showSnackBar(snackBar);
+                            _scaffoldKey.currentState.showSnackBar(snackBar);
                           }
                           Get.toNamed(Routes.HOME);
                         },

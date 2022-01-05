@@ -14,11 +14,11 @@ class User {
      this.password,
   });
 
-  int?createdAt;
-  String?fullName;
-  int?nationalId;
-  String?userName;
-  String?password;
+  int createdAt;
+  String fullName;
+  int nationalId;
+  String userName;
+  String password;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
     createdAt: json["createdAt"],

@@ -8,8 +8,8 @@ class SalomonBar extends StatelessWidget {
   ///
   /// https://dribbble.com/shots/5925052-Google-Bottom-Bar-Navigation-Pattern/
   SalomonBar({
-    Key? key,
-    required this.items,
+    Key key,
+     this.items,
     this.currentIndex = 0,
     this.onTap,
     this.selectedItemColor,
@@ -29,18 +29,18 @@ class SalomonBar extends StatelessWidget {
   /// The tab to display.
   final int currentIndex;
 
-  final double? elevation ;
+  final double elevation ;
   /// Returns the index of the tab that was tapped.
-  final Function(int)? onTap;
+  final Function(int) onTap;
 
   /// The color of the icon and text when the item is selected.
-  final Color? selectedItemColor;
+  final Color selectedItemColor;
 
   /// The color of the icon and text when the item is not selected.
-  final Color? unselectedItemColor;
+  final Color unselectedItemColor;
 
   /// The opacity of color of the touchable background when the item is selected.
-  final double? selectedColorOpacity;
+  final double selectedColorOpacity;
 
   /// The border shape of each item.
   final ShapeBorder itemShape;
@@ -174,20 +174,20 @@ class SalomonBottomBarItem {
   final Widget icon;
 
   /// An icon to display when this tab bar is active.
-  final Widget? activeIcon;
+  final Widget activeIcon;
 
   /// Text to display, ie `Home`
   final Widget title;
 
   /// A primary color to use for this tab.
-  final Color? selectedColor;
+  final Color selectedColor;
 
   /// The color to display when this tab is not selected.
-  final Color? unselectedColor;
+  final Color unselectedColor;
 
   SalomonBottomBarItem({
-    required this.icon,
-    required this.title,
+     this.icon,
+     this.title,
     this.selectedColor,
     this.unselectedColor,
     this.activeIcon,
