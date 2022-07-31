@@ -25,14 +25,14 @@ class WelcomeScreen extends StatelessWidget {
                   height: _size.height * 0.1,
                 ),
                 Expanded(
-                  flex: 12,
+                  flex: 8,
                   child: WelcomeImage(),
                 ),
                 Expanded(
                     flex: 4,
                     child: Container(
                       child: Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.center,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 20),
@@ -40,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.grey[700],
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 40)),
+                                  fontSize: 30)),
                         ),
                       ),
                     )),
@@ -59,14 +59,14 @@ class WelcomeScreen extends StatelessWidget {
                         Expanded(
                           flex: 10,
                           child: NeumorphicButton(
-                            margin: EdgeInsets.only(top: 12),
+                            margin: EdgeInsets.only(top: 15),
                             onPressed: () {
                               Get.toNamed(Routes.Login);
                             },
                             child: Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
-                              size: 40,
+                              size: 35,
                             ),
                             style: NeumorphicStyle(
                               color: Colors.black,
@@ -79,6 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
