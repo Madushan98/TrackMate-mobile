@@ -34,14 +34,13 @@ class WelcomeScreen extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 20.0,vertical: 20),
-                          child: Text(
-                            "Covid-Authenticator",
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 20),
+                          child: Text("Covid-Authenticator",
                               style: TextStyle(
                                   color: Colors.grey[700],
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 40)
-                          ),
+                                  fontSize: 40)),
                         ),
                       ),
                     )),

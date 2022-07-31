@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class WelcomeImage extends StatelessWidget {
   const WelcomeImage({
     Key? key,
@@ -10,7 +9,6 @@ class WelcomeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         SizedBox(height: 40),
         Row(
           children: [
@@ -22,13 +20,8 @@ class WelcomeImage extends StatelessWidget {
               ),
             ),
             Spacer(),
-
           ],
         ),
-
-
-
-
         SizedBox(height: 20),
       ],
     );
