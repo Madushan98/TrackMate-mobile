@@ -1,9 +1,10 @@
-import 'package:covid_safe_app/screens/AuthScreens/loginScreen.dart';
+import 'package:covid_safe_app/screens/home/homePage.dart';
 import 'package:covid_safe_app/screens/signUpScreen.dart';
-import 'package:covid_safe_app/screens/SplashScreen/welcomeScreen.dart';
+import 'package:covid_safe_app/screens/SplashScreen/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'dart:core';
-import 'package:covid_safe_app/screens/homeScreen.dart';
+
+import '../screens/AuthScreens/loginScreen.dart';
 part 'appRoutes.dart';
 
 class AppPages {
@@ -13,7 +14,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: Routes.HOME,
-      page: () => HomeScreen(),
+      page: () => HomePage(),
       transitionDuration: Duration(
           microseconds: 10),
     ),
