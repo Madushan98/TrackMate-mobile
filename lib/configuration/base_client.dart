@@ -1,10 +1,6 @@
-
-
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'app_exceptions.dart';
 
@@ -42,25 +38,26 @@ class BaseClient {
   //OTHER
 
   dynamic _processResponse(http.Response response) {
+
+    var responseUrl  = response.request?.url.toString() ?? "";
+
     switch (response.statusCode) {
       case 200:
         var responseJson = utf8.decode(response.bodyBytes);
         return responseJson;
-        break;
       case 201:
         var responseJson = utf8.decode(response.bodyBytes);
         return responseJson;
-        break;
       case 400:
-        throw BadRequestException(utf8.decode(response.bodyBytes), response.request.url.toString());
+        throw BadRequestException(utf8.decode(response.bodyBytes), responseUrl);
       case 401:
       case 403:
-        throw UnAuthorizedException(utf8.decode(response.bodyBytes), response.request.url.toString());
+        throw UnAuthorizedException(utf8.decode(response.bodyBytes), responseUrl);
       case 422:
-        throw BadRequestException(utf8.decode(response.bodyBytes), response.request.url.toString());
+        throw BadRequestException(utf8.decode(response.bodyBytes), responseUrl);
       case 500:
       default:
-        throw FetchDataException('Error occured with code : ${response.statusCode}', response.request.url.toString());
+        throw FetchDataException('Error occured with code : ${response.statusCode}', responseUrl);
     }
   }
 }

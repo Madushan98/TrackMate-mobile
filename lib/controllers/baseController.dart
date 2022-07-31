@@ -17,7 +17,7 @@ class BaseController {
     }
   }
 
-  showLoading([String message]) {
+  showLoading(String message) {
     LoadingStatus.showLoading(message);
   }
 

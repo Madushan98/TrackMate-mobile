@@ -2,7 +2,9 @@ const _baseUrl = "baseUrl";
 
 enum Environment { dev, stage, prod }
 
-Map<String, dynamic> _config;
+Map<String, dynamic> _config = {};
+
+
 
 void setEnvironment(Environment env) {
   switch (env) {

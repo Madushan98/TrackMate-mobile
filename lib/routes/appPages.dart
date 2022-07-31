@@ -1,6 +1,6 @@
-import 'package:covid_safe_app/screens/loginScreen.dart';
+import 'package:covid_safe_app/screens/AuthScreens/loginScreen.dart';
 import 'package:covid_safe_app/screens/signUpScreen.dart';
-import 'package:covid_safe_app/screens/welcomeScreen.dart';
+import 'package:covid_safe_app/screens/SplashScreen/welcomeScreen.dart';
 import 'package:get/get.dart';
 import 'dart:core';
 import 'package:covid_safe_app/screens/homeScreen.dart';
@@ -14,7 +14,8 @@ class AppPages {
     GetPage(
       name: Routes.HOME,
       page: () => HomeScreen(),
-
+      transitionDuration: Duration(
+          microseconds: 10),
     ),
     GetPage(
       name: Routes.SignUp,
@@ -27,7 +28,8 @@ class AppPages {
     GetPage(
       name: Routes.Login,
       page: () => LoginScreen(),
-
+      transitionDuration: Duration(
+          microseconds: 0),
     ),
   ];
 }
