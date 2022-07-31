@@ -34,6 +34,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   stylish_bottom_bar: ^0.0.4
+  hooks_riverpod: ^1.0.4
+  flutter_hooks: ^0.18.5+1
+  shared_preferences: ^2.0.15
 dev_dependencies:
   flutter_test:
     sdk: flutter
