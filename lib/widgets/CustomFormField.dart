@@ -74,7 +74,7 @@ class FormFieldWidget extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                       ),
                     ),
@@ -92,7 +92,7 @@ class FormFieldWidget extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
-                          fontSize: 18),
+                          fontSize: 16),
                     ),
                   ),
                   Expanded(
