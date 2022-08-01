@@ -4,8 +4,6 @@ enum Environment { dev, stage, prod }
 
 Map<String, dynamic> _config = {};
 
-
-
 void setEnvironment(Environment env) {
   switch (env) {
     case Environment.dev:
@@ -25,14 +23,13 @@ dynamic get apiBaseUrl {
 }
 
 Map<String, dynamic> devConstants = {
-  _baseUrl: "https://devapi.xyz.com/",
+  _baseUrl: "https://localhost:7005/api/v1/",
 };
 
-
 Map<String, dynamic> stageConstants = {
-  _baseUrl: "https://api.stage.com/",
+  _baseUrl: "https://localhost:7005/api/v1/",
 };
 
 Map<String, dynamic> prodConstants = {
-  _baseUrl: "https://api.production.com/",
+  _baseUrl: "https://localhost:7005/api/v1/",
 };
