@@ -131,30 +131,29 @@ class _AccountScreenState extends State<AccountScreen> {
               value: "074231313",
             ),
             SizedBox(
-              height: 40,
+              height: 60,
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-
                       child: InkWell(
                         onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.black,
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.black,
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.black,
                                     offset: Offset(0, 4),
                                     blurRadius: 0)
-                              ]
-                          ),
+                              ]),
                           padding: const EdgeInsets.all(14),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -183,15 +182,14 @@ class _AccountScreenState extends State<AccountScreen> {
                         onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.black,
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.black,
                               boxShadow: [
-                                  BoxShadow(
-                                color: Colors.black,
-                                      offset: Offset(0, 4),
-                                      blurRadius: 0)
-                              ]
-                          ),
+                                BoxShadow(
+                                    color: Colors.black,
+                                    offset: Offset(0, 4),
+                                    blurRadius: 0)
+                              ]),
                           padding: const EdgeInsets.all(14),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,

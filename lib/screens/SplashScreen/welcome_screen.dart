@@ -25,11 +25,11 @@ class WelcomeScreen extends StatelessWidget {
                   height: _size.height * 0.1,
                 ),
                 Expanded(
-                  flex: 8,
+                  flex: 10,
                   child: WelcomeImage(),
                 ),
                 Expanded(
-                    flex: 4,
+                    flex: 2,
                     child: Container(
                       child: Align(
                         alignment: Alignment.center,
@@ -45,40 +45,35 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     )),
                 Expanded(
-                  flex: 4,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 14,
-                          child: SizedBox(
-                            width: 50,
+                  flex: 3,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: NeumorphicButton(
+                          margin: EdgeInsets.only(top: 15),
+                          onPressed: () {
+                            Get.toNamed(Routes.Login);
+                          },
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                          style: NeumorphicStyle(
+                            color: Colors.black,
+                            shape: NeumorphicShape.flat,
+                            boxShape: NeumorphicBoxShape.circle(),
                           ),
                         ),
-                        Expanded(
-                          flex: 10,
-                          child: NeumorphicButton(
-                            margin: EdgeInsets.only(top: 15),
-                            onPressed: () {
-                              Get.toNamed(Routes.Login);
-                            },
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                            style: NeumorphicStyle(
-                              color: Colors.black,
-                              shape: NeumorphicShape.flat,
-                              boxShape: NeumorphicBoxShape.circle(),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
+                Expanded(
+                    flex: 4,
+                    child: Container())
 
               ],
             ),
