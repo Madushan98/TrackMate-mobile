@@ -1,7 +1,8 @@
 import 'package:covid_safe_app/controllers/screenControllers/dashBoardController.dart';
 import 'package:covid_safe_app/screens/home/Pages/account_screen.dart';
-import 'package:covid_safe_app/screens/home/Pages/dashBord.dart';
-import 'package:covid_safe_app/widgets/profileAvatar.dart';
+import 'package:covid_safe_app/screens/home/Pages/dashBord_screen.dart';
+import 'package:covid_safe_app/screens/home/Pages/pass_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,15 +31,31 @@ class _HomePageState extends State<HomePage>
     DashBord(),
     DashBord(),
     DashBord(),
-    AccountScreen(),
+    PassScreen(),
+    AccountScreen()
+
   ];
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
+
+        backgroundColor: Colors.white,
+
         bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(0, 4),
+                    blurRadius: 4)
+              ]
+          ),
           child: BottomNavigationBar(
+
             backgroundColor: Colors.white,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -61,6 +78,13 @@ class _HomePageState extends State<HomePage>
                   size: 25,
                 ),
                 label: "Alert",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.qr_code_2_rounded,
+                  size: 25,
+                ),
+                label: 'Pass',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
