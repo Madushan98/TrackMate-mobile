@@ -7,12 +7,13 @@ class ProfileAvatar extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
   final bool hasBorder;
+  final double size ;
 
   const ProfileAvatar({
-    Key key,
-     this.imageUrl,
+    Key? key,
+     required this.imageUrl,
     this.isActive =true,
-    this.hasBorder = false,
+    this.hasBorder = false, this.size = 50,
   }) : super(key: key);
 
   @override
@@ -22,10 +23,10 @@ class ProfileAvatar extends StatelessWidget {
       child: Stack(
         children: [
           CircleAvatar(
-            radius: 15.0,
+            radius: size,
             backgroundColor: Colors.green,
             child: CircleAvatar(
-              radius: hasBorder ? 15.0 : 18.0,
+              radius: hasBorder ?  size :  size,
               backgroundColor: Colors.grey[200],
               backgroundImage: NetworkImage(imageUrl),
             ),
