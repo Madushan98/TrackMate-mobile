@@ -4,6 +4,7 @@ import 'package:covid_safe_app/screens/SplashScreen/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'dart:core';
 import '../screens/auth/login_screen.dart';
+import '../screens/auth/register_Screen.dart';
 part 'appRoutes.dart';
 
 class AppPages {
@@ -17,7 +18,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.SignUp,
-      page: () => SignUpScreen(),
+      page: () => RegisterScreen(),
     ),
     GetPage(
       name: Routes.WelCome,
