@@ -6,4 +6,5 @@ abstract class Routes {
   static const SignUp = '/sign_up';
   static const WelCome = '/welcome' ;
   static const Login  = '/login';
+  static const QrCodeScreen = '/qrCode_screen';
 }

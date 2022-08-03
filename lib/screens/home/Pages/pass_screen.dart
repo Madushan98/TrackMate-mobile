@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../routes/appPages.dart';
+import '../../qrCode/qr_screen.dart';
 
 class PassScreen extends StatefulWidget {
   const PassScreen({Key? key}) : super(key: key);
@@ -15,14 +20,18 @@ class _PassScreenState extends State<PassScreen> {
     final _size = MediaQuery.of(context).size;
 
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.grey[900],
-          child: Icon(
-            Icons.add,
-            size: 40,
-            color: Colors.yellow[800],
+        floatingActionButton: Container(
+          width: 50,
+          height: 50,
+          child: FloatingActionButton(
+            backgroundColor: Colors.grey[900],
+            child: Icon(
+              Icons.add,
+              size: 30,
+              color: Colors.yellow[800],
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -76,8 +85,11 @@ class _PassScreenState extends State<PassScreen> {
                   child: ListView(
                     children: [
                       InkWell(
-                        onTap: (){
-
+                        onTap: () {
+                          Get.toNamed(Routes.QrCodeScreen,
+                              arguments: QrCodeScreen(
+                                id: 'abc',
+                              ));
                         },
                         child: Card(
                           elevation: 1,
@@ -96,7 +108,8 @@ class _PassScreenState extends State<PassScreen> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Text(
                                           "QR Code For work Transportation",
@@ -104,14 +117,14 @@ class _PassScreenState extends State<PassScreen> {
                                               fontWeight: FontWeight.bold,
                                               fontSize: 20),
                                         ),
-                                        Text("Last Updated : 2022-12-18 5.00 PM")
+                                        Text(
+                                            "Last Updated : 2022-12-18 5.00 PM")
                                       ],
                                     ),
                                   ),
                                   Expanded(
                                     flex: 4,
                                     child: Column(
-
                                       children: [
                                         Align(
                                           alignment: Alignment.centerRight,
@@ -128,7 +141,6 @@ class _PassScreenState extends State<PassScreen> {
                                               Icons.arrow_circle_right_rounded,
                                               size: 20,
                                             ),
-
                                             Icon(
                                               Icons.delete_rounded,
                                               size: 20,
