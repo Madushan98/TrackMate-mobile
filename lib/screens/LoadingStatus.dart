@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoadingStatus {
-
-
-  static void showErroDialog({String title = 'Error', String description = 'Something went wrong'}) {
+  static void showErroDialog(
+      {String title = 'Error', String description = 'Something went wrong'}) {
     Get.dialog(
       Dialog(
         child: Padding(
@@ -17,12 +16,12 @@ class LoadingStatus {
                 style: Get.textTheme.headline4,
               ),
               Text(
-                description ?? '',
+                description,
                 style: Get.textTheme.headline6,
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (Get.isDialogOpen) Get.back();
+                  if (Get.isDialogOpen!) Get.back();
                 },
                 child: Text('Okay'),
               ),
@@ -33,7 +32,7 @@ class LoadingStatus {
     );
   }
 
-  static void showLoading([String message]) {
+  static void showLoading(String message) {
     Get.dialog(
       Dialog(
         child: Padding(
@@ -43,7 +42,7 @@ class LoadingStatus {
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 8),
-              Text(message ?? 'Loading...'),
+              Text(message),
             ],
           ),
         ),
@@ -53,7 +52,6 @@ class LoadingStatus {
 
   //hide loading
   static void hideLoading() {
-    if (Get.isDialogOpen) Get.back();
+    if (Get.isDialogOpen!) Get.back();
   }
-
 }
