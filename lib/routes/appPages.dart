@@ -18,7 +18,6 @@ class AppPages {
       page: () => Splash(),
       transitionDuration: Duration(microseconds: 10),
     ),
-
     GetPage(
       name: Routes.HOME,
       page: () => HomePage(),
@@ -34,8 +33,9 @@ class AppPages {
     ),
     GetPage(
       name: Routes.Login,
+      transitionDuration: Duration(microseconds: 100),
       page: () => LoginScreen(),
-      transitionDuration: Duration(microseconds: 0),
+
     ),
     GetPage(
       name: Routes.QrCodeScreen,
