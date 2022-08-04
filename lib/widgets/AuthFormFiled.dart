@@ -8,7 +8,7 @@ class AuthFormFieldWidget extends StatelessWidget {
     required this.icon,
     this.initValue = "",
      this.textInputType = TextInputType.text,
-    required this.hintText,
+    required this.hintText, required this.updateValue,
   })  : _size = size,
         super(key: key);
 
@@ -17,6 +17,7 @@ class AuthFormFieldWidget extends StatelessWidget {
   final IconData icon;
   final TextInputType textInputType;
   final String hintText;
+  final Function updateValue;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,9 @@ class AuthFormFieldWidget extends StatelessWidget {
                             EdgeInsets.symmetric(horizontal: 0, vertical: 5),
 //                          labelText: value.value,
                       ),
-                      onChanged: (text) {},
+                      onChanged: (text) {
+                        updateValue(text);
+                      },
                     ),
                   ),
                 ),
