@@ -1,10 +1,8 @@
-import 'package:covid_safe_app/customPainter/curves.dart';
 import 'package:covid_safe_app/routes/appPages.dart';
 import 'package:covid_safe_app/screens/SplashScreen/splash_image_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -29,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: WelcomeImage(),
                 ),
                 Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: Container(
                       child: Align(
                         alignment: Alignment.center,
@@ -45,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     )),
                 Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -71,10 +69,7 @@ class WelcomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
-                    flex: 4,
-                    child: Container())
-
+                Expanded(flex: 1, child: Container())
               ],
             ),
           ),
