@@ -35,12 +35,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   stylish_bottom_bar: ^0.0.4
   hooks_riverpod: ^1.0.4
+  google_maps_flutter: ^2.1.1
   flutter_hooks: ^0.18.5+1
   shared_preferences: ^2.0.15
   flutter_barcode_scanner: ^2.0.0
   encrypt: ^5.0.0
   qr_flutter: ^4.0.0
   url_launcher: ^6.0.3
+  connectivity_plus: ^2.3.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,6 +61,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/images/welcome/
+     - assets/images/user/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
