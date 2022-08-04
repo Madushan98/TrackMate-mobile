@@ -1,4 +1,5 @@
 const _baseUrl = "baseUrl";
+const _userService = "user-service";
 
 enum Environment { dev, stage, prod }
 
@@ -22,14 +23,21 @@ dynamic get apiBaseUrl {
   return _config[_baseUrl];
 }
 
+dynamic get userService {
+  return _config[_userService];
+}
+
 Map<String, dynamic> devConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
+  _userService: "https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/"
 };
 
 Map<String, dynamic> stageConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
+  _userService:"https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/"
 };
 
 Map<String, dynamic> prodConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
+  _userService: "https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/"
 };
