@@ -1,6 +1,5 @@
 import 'package:covid_safe_app/screens/home/home_page.dart';
 import 'package:covid_safe_app/screens/qrCode/qr_screen.dart';
-import 'package:covid_safe_app/screens/signUpScreen.dart';
 import 'package:covid_safe_app/screens/SplashScreen/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'dart:core';
@@ -35,7 +34,6 @@ class AppPages {
       name: Routes.Login,
       transitionDuration: Duration(microseconds: 100),
       page: () => LoginScreen(),
-
     ),
     GetPage(
       name: Routes.QrCodeScreen,
