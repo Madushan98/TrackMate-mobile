@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../routes/appPages.dart';
 import '../../service/Authentication/AuthService.dart';
 
-class AuthController extends GetxController {
+class LoginController extends GetxController {
   var isLogging = false.obs;
   var errorMessage = "".obs;
   var isError = false;

@@ -1,4 +1,4 @@
-import 'package:covid_safe_app/controllers/authController/auth_controller.dart';
+import 'package:covid_safe_app/controllers/authController/login_controller.dart';
 import 'package:covid_safe_app/widgets/AuthFormFiled.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -9,7 +9,7 @@ import '../../routes/appPages.dart';
 import '../../widgets/CustomButton.dart';
 
 class LoginScreen extends StatelessWidget {
-  final _authController = Get.put(AuthController());
+  final _authController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                                             fontSize: 20)),
                                     InkWell(
                                       onTap: () {
-                                        Get.toNamed(Routes.HOME);
+                                        Get.toNamed(Routes.SignUp);
                                       },
                                       child: Text(" Register now",
                                           style: TextStyle(
