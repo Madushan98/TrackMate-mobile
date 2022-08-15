@@ -43,6 +43,8 @@ dependencies:
   qr_flutter: ^4.0.0
   url_launcher: ^6.0.3
   connectivity_plus: ^2.3.6
+  flutter_datetime_picker: ^1.5.1
+  toggle_switch: ^2.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
