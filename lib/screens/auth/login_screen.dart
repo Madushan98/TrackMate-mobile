@@ -9,7 +9,7 @@ import '../../routes/appPages.dart';
 import '../../widgets/CustomButton.dart';
 
 class LoginScreen extends StatelessWidget {
-  final _authController = Get.put(LoginController());
+  final _loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +48,8 @@ class LoginScreen extends StatelessWidget {
                   icon: Icons.person,
                   hintText: "ID Number",
                   updateValue: (value) {
-                    _authController.nationalId.value = value;
-                    _authController.update();
+                    _loginController.nationalId.value = value;
+                    _loginController.update();
                   },
                 ),
                 AuthFormFieldWidget(
@@ -59,11 +59,11 @@ class LoginScreen extends StatelessWidget {
                   hintText: "Password",
                   textInputType: TextInputType.visiblePassword,
                   updateValue: (value) {
-                    _authController.password.value = value;
-                    _authController.update();
+                    _loginController.password.value = value;
+                    _loginController.update();
                   },
                 ),
-                _authController.isLogging.value
+                _loginController.isLogging.value
                     ? Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 30, vertical: 20),
@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                     : CustomNumphoricWidget(
                         onTap: () {
                           //  _authController.getUser();
-                          _authController.loginUser(context);
+                          _loginController.loginUser(context);
                         },
                       ),
                 SizedBox(
