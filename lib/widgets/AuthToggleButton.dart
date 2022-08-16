@@ -33,7 +33,19 @@ class _AuthToggleButtonWidgetState extends State<AuthToggleButtonWidget> {
             borderRadius: new BorderRadius.circular(10),
           ),
           child: Container(
-
+            child: ToggleSwitch(
+              inactiveBgColor: Color(0xFFC4C4C4).withOpacity(0.25),
+              minHeight: 60,
+              minWidth: 80,
+              initialLabelIndex: 0,
+              totalSwitches:widget.data.length,
+              labels: widget.data,
+              onToggle: (index) {
+                if (index != null) {
+                  widget.updateValue(widget.data[index]);
+                }
+              },
+            ),
           ),
         ),
       ),
