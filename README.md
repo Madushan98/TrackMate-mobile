@@ -1,4 +1,4 @@
-# covid_safe_app
+# Covid Pass Generator and Authenticator
 
 software project mobile application
 
