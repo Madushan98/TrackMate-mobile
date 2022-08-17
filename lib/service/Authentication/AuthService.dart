@@ -1,30 +1,39 @@
 import 'dart:convert';
-
 import 'package:covid_safe_app/configuration/app_config.dart';
 import 'package:covid_safe_app/configuration/app_constants.dart';
 import 'package:covid_safe_app/configuration/base_client.dart';
 import 'package:covid_safe_app/models/Auth/LoginModel.dart';
 import 'package:covid_safe_app/models/Auth/AuthModel.dart';
+import 'package:covid_safe_app/models/Auth/RegistrationModel.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/state_manager.dart';
 
-class AuthService {
+class AuthService extends GetxService{
   bool isAuthenticated = false;
+  var user;
 
   Future<bool> logIn(LoginModel loginRequest, BuildContext context) async {
-    var jsonBody = jsonEncode(loginRequest);
-
     var response = await BaseClient().post(userService, "login", loginRequest);
     if (response != null) {
       print(response);
       final jsonData = jsonDecode(response);
-      var user = AuthModel.fromJson(jsonData);
+      user = AuthModel.fromJson(jsonData);
       if (user.token != null) {
         setAuthToken(user.token!);
         return true;
       }
+      return false;
+    }
+    return false;
+  }
 
+  Future<bool> registerUser(RegistrationModel registrationRequest) async {
+    var response =
+        await BaseClient().post(userService, "register", registrationRequest);
+    if (response != null) {
+      final jsonData = jsonDecode(response);
+      user = RegistrationModel.fromJson(jsonData);
       return true;
     }
     return false;
@@ -36,9 +45,8 @@ class AuthService {
   }
 
   Future<void> isTokenAvailable() async {
-    final prefs = await SharedPreferences.getInstance();
-    var authToken = prefs.getString(Constants.authToken);
-
+    final storage = new FlutterSecureStorage();
+    var authToken = await storage.read(key:Constants.authToken.toString());
     if (authToken != null) {
       this.isAuthenticated = true;
     } else {
@@ -47,13 +55,17 @@ class AuthService {
   }
 
   Future<bool> LogOut() async {
-    final prefs = await SharedPreferences.getInstance();
-    return await prefs.remove(Constants.authToken);
+    final storage = new FlutterSecureStorage();
+    await storage.delete(key:Constants.authToken);
+    return true;
   }
 
   Future<bool> setAuthToken(String token) async {
-    final prefs = await SharedPreferences.getInstance();
+    final storage = new FlutterSecureStorage();
+    await storage.write(key:Constants.authToken, value: token);
+    var authToken = await storage.read(key:Constants.authToken.toString());
+    print(authToken);
     isAuthenticated = true;
-    return await prefs.setString(Constants.authToken, token);
+    return isAuthenticated;
   }
 }
