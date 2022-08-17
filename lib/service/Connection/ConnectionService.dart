@@ -38,16 +38,16 @@ class ConnectivityService {
     await connectivity.checkConnectivity();
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      try {
-        final result = await InternetAddress.lookup('google.com');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-          isConnected = true;
-        }
-      } on SocketException catch (_) {
-        isConnected = false;
-      }
-    } else {
-      isConnected = false;
+    //   try {
+    //     final result = await InternetAddress.lookup('google.com');
+    //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+    //       isConnected = true;
+    //     }
+    //   } on SocketException catch (_) {
+    //     isConnected = false;
+    //   }
+    // } else {
+      isConnected = true;
     }
     return isConnected;
   }
