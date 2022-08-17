@@ -13,18 +13,19 @@
 
 class RegistrationModel {
   RegistrationModel({
-      this.nationalId, 
-      this.fullName, 
-      this.password, 
-      this.gender, 
-      this.location, 
-      this.age, 
-      this.primaryContactNumber, 
-      this.emergencyContactNumber, 
-      this.town, 
-      this.district, 
-      this.address, 
-      this.deviceId,});
+    this.nationalId,
+    this.fullName,
+    this.password,
+    this.gender,
+    this.location,
+    this.age,
+    this.primaryContactNumber,
+    this.emergencyContactNumber,
+    this.town,
+    this.district,
+    this.address,
+    this.deviceId,
+  });
 
   RegistrationModel.fromJson(dynamic json) {
     nationalId = json['nationalId'];
@@ -52,31 +53,35 @@ class RegistrationModel {
   String? district;
   String? address;
   String? deviceId;
-RegistrationModel copyWith({  String? nationalId,
-  String? fullName,
-  String? password,
-  String? gender,
-  String? location,
-  String? age,
-  String? primaryContactNumber,
-  String? emergencyContactNumber,
-  String? town,
-  String? district,
-  String? address,
-  String? deviceId,
-}) => RegistrationModel(  nationalId: nationalId ?? this.nationalId,
-  fullName: fullName ?? this.fullName,
-  password: password ?? this.password,
-  gender: gender ?? this.gender,
-  location: location ?? this.location,
-  age: age ?? this.age,
-  primaryContactNumber: primaryContactNumber ?? this.primaryContactNumber,
-  emergencyContactNumber: emergencyContactNumber ?? this.emergencyContactNumber,
-  town: town ?? this.town,
-  district: district ?? this.district,
-  address: address ?? this.address,
-  deviceId: deviceId ?? this.deviceId,
-);
+  RegistrationModel copyWith({
+    String? nationalId,
+    String? fullName,
+    String? password,
+    String? gender,
+    String? location,
+    String? age,
+    String? primaryContactNumber,
+    String? emergencyContactNumber,
+    String? town,
+    String? district,
+    String? address,
+    String? deviceId,
+  }) =>
+      RegistrationModel(
+        nationalId: nationalId ?? this.nationalId,
+        fullName: fullName ?? this.fullName,
+        password: password ?? this.password,
+        gender: gender ?? this.gender,
+        location: location ?? this.location,
+        age: age ?? this.age,
+        primaryContactNumber: primaryContactNumber ?? this.primaryContactNumber,
+        emergencyContactNumber:
+            emergencyContactNumber ?? this.emergencyContactNumber,
+        town: town ?? this.town,
+        district: district ?? this.district,
+        address: address ?? this.address,
+        deviceId: deviceId ?? this.deviceId,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['nationalId'] = nationalId;
@@ -93,5 +98,4 @@ RegistrationModel copyWith({  String? nationalId,
     map['deviceId'] = deviceId;
     return map;
   }
-
 }
