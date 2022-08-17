@@ -1,8 +1,6 @@
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticatedHttpClient extends http.BaseClient {
-
   AuthenticatedHttpClient();
 
   // Use a memory cache to avoid local storage access in each call
@@ -19,8 +17,6 @@ class AuthenticatedHttpClient extends http.BaseClient {
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
-
-
     // intercept each call and add the Authorization header if token is available
     var userAccessToken = await getUserAccessToken;
     if (userAccessToken.isNotEmpty) {
@@ -30,9 +26,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
     return request.send();
   }
 
-  Future<String> _loadTokenFromSharedPreference() async{
-
-
+  Future<String> _loadTokenFromSharedPreference() async {
     var accessToken = '';
     final token = "aside";
 
