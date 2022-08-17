@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:covid_safe_app/service/Authentication/RoleService.dart';
 import 'package:covid_safe_app/service/Connection/ConnectionService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,13 +22,14 @@ class SplashState extends State<Splash> {
 
   var _connectivityService = Get.find<ConnectivityService>();
   var _authService = Get.find<AuthService>();
-
+  var _roleService = Get.find<RoleService>();
   Future<void> checkFirstSeen() async {
     this.isConnected = await _connectivityService.checkConnection();
     await _authService.isTokenAvailable();
     _isLogged = _authService.isAuthenticated;
     if (this.isConnected) {
       if (_isLogged) {
+        await _roleService.setUserRole();
         Get.offAndToNamed(Routes.HOME);
       } else {
         Get.offAndToNamed(Routes.Login);
