@@ -1,3 +1,4 @@
+import 'package:covid_safe_app/screens/home/Pages/account_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,6 +30,7 @@ class _HomePageState extends State<ScannerHomePage>
   static List<Widget> _pages = <Widget>[
     ScannerDashBord(),
     ScanQRScreen(),
+    AccountScreen()
 
   ];
 
@@ -76,6 +78,13 @@ class _HomePageState extends State<ScannerHomePage>
                     size: 25,
                   ),
                   label: 'Pass',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.person,
+                    size: 25,
+                  ),
+                  label: 'Account',
                 ),
               ],
               type: BottomNavigationBarType.shifting,
