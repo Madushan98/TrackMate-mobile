@@ -37,7 +37,6 @@ dependencies:
   hooks_riverpod: ^1.0.4
   google_maps_flutter: ^2.1.1
   flutter_hooks: ^0.18.5+1
-  shared_preferences: ^2.0.15
   flutter_barcode_scanner: ^2.0.0
   encrypt: ^5.0.0
   qr_flutter: ^4.0.0
@@ -45,6 +44,8 @@ dependencies:
   connectivity_plus: ^2.3.6
   flutter_datetime_picker: ^1.5.1
   toggle_switch: ^2.0.1
+  jwt_decoder: ^2.0.1
+  flutter_secure_storage: ^6.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

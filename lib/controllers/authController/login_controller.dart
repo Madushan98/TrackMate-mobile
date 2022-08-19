@@ -1,4 +1,5 @@
 import 'package:covid_safe_app/models/Auth/LoginModel.dart';
+import 'package:covid_safe_app/service/Authentication/RoleService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,7 @@ class LoginController extends GetxController {
   var nationalId = "".obs;
   var password = "".obs;
   var _authService = Get.find<AuthService>();
+  var _roleService = Get.find<RoleService>();
 
   @override
   void onInit() {
@@ -29,9 +31,10 @@ class LoginController extends GetxController {
           nationalId: nationalId.value, password: password.value);
 
       var isLogged = await _authService.logIn(loginModel, context);
-
+      var userRole = await  _roleService.setUserRole();
+      print(userRole);
       if (isLogged) {
-        Get.offAndToNamed(Routes.HOME);
+        Get.offAllNamed(Routes.HOME);
       }
     } catch (e) {
       print(e);

@@ -1,3 +1,5 @@
+import 'package:covid_safe_app/routes/guards/roleGuard.dart';
+import 'package:covid_safe_app/screens/Scanner/scanner_home_page.dart';
 import 'package:covid_safe_app/screens/home/home_page.dart';
 import 'package:covid_safe_app/screens/qrCode/qr_screen.dart';
 import 'package:covid_safe_app/screens/SplashScreen/welcome_screen.dart';
@@ -6,6 +8,7 @@ import 'dart:core';
 import '../screens/SplashScreen/splashScreeen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/register_Screen.dart';
+import 'guards/primaryGuard.dart';
 part 'appRoutes.dart';
 
 class AppPages {
@@ -18,9 +21,15 @@ class AppPages {
       transitionDuration: Duration(microseconds: 10),
     ),
     GetPage(
+      name: Routes.Login,
+      transitionDuration: Duration(microseconds: 100),
+      page: () => LoginScreen(),
+    ),
+    GetPage(
       name: Routes.HOME,
       page: () => HomePage(),
       transitionDuration: Duration(microseconds: 100),
+      middlewares: [PremiumGuard(), UserGuard()]
     ),
     GetPage(
       name: Routes.SignUp,
@@ -31,11 +40,6 @@ class AppPages {
       page: () => WelcomeScreen(),
     ),
     GetPage(
-      name: Routes.Login,
-      transitionDuration: Duration(microseconds: 100),
-      page: () => LoginScreen(),
-    ),
-    GetPage(
       name: Routes.QrCodeScreen,
       page: () {
         QrCodeScreen _qrCodeScreen = Get.arguments;
@@ -43,5 +47,10 @@ class AppPages {
       },
       transitionDuration: Duration(microseconds: 0),
     ),
+    GetPage(
+        name: Routes.Scanner,
+        transitionDuration: Duration(microseconds: 100),
+        page: () => ScannerHomePage(),
+        middlewares: [PremiumGuard(), ScannerGuard()]),
   ];
 }
