@@ -7,7 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../controllers/screenControllers/dashBoardController.dart';
 import 'Pages/scanner_dashbord_screen.dart';
-import 'Pages/scanner_screen.dart';
+import 'Pages/passLog_screen.dart';
 
 class ScannerHomePage extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _HomePageState extends State<ScannerHomePage>
 
   static List<Widget> _pages = <Widget>[
     ScannerDashBord(),
-    ScanQRScreen(),
+    PassLogScreen(),
     AccountScreen()
 
   ];
