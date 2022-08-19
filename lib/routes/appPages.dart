@@ -52,5 +52,7 @@ class AppPages {
         transitionDuration: Duration(microseconds: 100),
         page: () => ScannerHomePage(),
         middlewares: [PremiumGuard(), ScannerGuard()]),
+
+
   ];
 }
