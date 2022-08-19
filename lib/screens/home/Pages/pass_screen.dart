@@ -1,3 +1,5 @@
+import 'package:covid_safe_app/controllers/passControllers/pass-manger_controller.dart';
+import 'package:covid_safe_app/controllers/passControllers/qr_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +17,13 @@ class PassScreen extends StatefulWidget {
 }
 
 class _PassScreenState extends State<PassScreen> {
+  final _passController = Get.put(PassManagerController());
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -34,134 +43,159 @@ class _PassScreenState extends State<PassScreen> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Container(
-              child: Column(
-            children: [
-              Material(
-                elevation: 4,
-                shape:
-                    RoundedRectangleBorder(borderRadius: BorderRadius.only()),
-                color: Colors.grey[900],
-                child: Container(
-                  height: _size.height * 0.08,
-                  width: _size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Text(
-                            "Digital Pass",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              Icons.qr_code,
-                              color: Colors.white,
+          child: Obx(() {
+            return Container(
+                child: Column(
+              children: [
+                Material(
+                  elevation: 4,
+                  shape:
+                      RoundedRectangleBorder(borderRadius: BorderRadius.only()),
+                  color: Colors.grey[900],
+                  child: Container(
+                    height: _size.height * 0.08,
+                    width: _size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              "Digital Pass",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
-                        )
-                      ],
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.qr_code,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: _size.height,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: ListView(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(Routes.QrCodeScreen,
-                              arguments: QrCodeScreen(
-                                id: 'abc',
-                              ));
-                        },
-                        child: Card(
-                          elevation: 1,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 15),
-                            child: Container(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    flex: 6,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "QR Code For work Transportation",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20),
-                                        ),
-                                        Text(
-                                            "Last Updated : 2022-12-18 5.00 PM")
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 4,
-                                    child: Column(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Icon(
-                                            Icons.qr_code_2,
-                                            size: 60,
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Icon(
-                                              Icons.arrow_circle_right_rounded,
-                                              size: 20,
-                                            ),
-                                            Icon(
-                                              Icons.delete_rounded,
-                                              size: 20,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                _passController.isLoading.value
+                    ? Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 20),
+                          child: Container(
+                            height: _size.height*0.8,
+                            width:  _size.height,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  color: Colors.grey[900],
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          )),
+                    : Container(
+                        height: _size.height,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          child: ListView.builder(
+                              itemCount: _passController.passList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                var pass = _passController.passList[index];
+                                return InkWell(
+                                  onTap: () {
+                                    Get.toNamed(Routes.QrCodeScreen,
+                                        arguments: QrCodeScreen(
+                                          passId: pass.id!,
+                                        ));
+                                  },
+                                  child: Card(
+                                    elevation: 1,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 15),
+                                      child: Container(
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              flex: 6,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "QR Code For work Transportation",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  Text(
+                                                      "Last Updated : 2022-12-18 5.00 PM")
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 4,
+                                              child: Column(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: Icon(
+                                                      Icons.qr_code_2,
+                                                      size: 60,
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Icon(
+                                                        Icons
+                                                            .arrow_circle_right_rounded,
+                                                        size: 20,
+                                                      ),
+                                                      Icon(
+                                                        Icons.delete_rounded,
+                                                        size: 20,
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        )),
+              ],
+            ));
+          }),
         ));
   }
 }
