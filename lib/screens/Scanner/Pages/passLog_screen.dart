@@ -5,18 +5,18 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../service/QrGeneration/ASEncryption.dart';
 
-class ScanQRScreen extends StatefulWidget {
-  ScanQRScreen({Key? key}) : super(key: key);
+class PassLogScreen extends StatefulWidget {
+  PassLogScreen({Key? key}) : super(key: key);
 
   @override
-  _ScanQRScreenState createState() => _ScanQRScreenState();
+  _PassLogScreenState createState() => _PassLogScreenState();
 }
 
 String qrData = "No data found!";
 var data;
 bool hasdata = false;
 
-class _ScanQRScreenState extends State<ScanQRScreen> {
+class _PassLogScreenState extends State<PassLogScreen> {
   AESEncryption encryption = new AESEncryption();
 
   @override
