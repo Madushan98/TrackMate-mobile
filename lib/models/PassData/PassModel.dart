@@ -8,19 +8,19 @@
 /// userId : "11111111-1111-1111-1111-111111111111"
 /// nationalId : "982351123V"
 
-class PassLog {
-  PassLog({
-    this.id,
-    this.generatedDateTime,
-    this.isValid,
-    this.isApproved,
-    this.isReoccurring,
-    this.startDateTime,
-    this.endDateTime,
-    this.userId,
-    this.nationalId,});
+class PassModel {
+  PassModel({
+      this.id, 
+      this.generatedDateTime, 
+      this.isValid, 
+      this.isApproved, 
+      this.isReoccurring, 
+      this.startDateTime, 
+      this.endDateTime, 
+      this.userId, 
+      this.nationalId,});
 
-  PassLog.fromJson(dynamic json) {
+  PassModel.fromJson(dynamic json) {
     id = json['id'];
     generatedDateTime = json['generatedDateTime'];
     isValid = json['isValid'];
@@ -40,25 +40,25 @@ class PassLog {
   String? endDateTime;
   String? userId;
   String? nationalId;
-  PassLog copyWith({  String? id,
-    String? generatedDateTime,
-    bool? isValid,
-    bool? isApproved,
-    bool? isReoccurring,
-    String? startDateTime,
-    String? endDateTime,
-    String? userId,
-    String? nationalId,
-  }) => PassLog(  id: id ?? this.id,
-    generatedDateTime: generatedDateTime ?? this.generatedDateTime,
-    isValid: isValid ?? this.isValid,
-    isApproved: isApproved ?? this.isApproved,
-    isReoccurring: isReoccurring ?? this.isReoccurring,
-    startDateTime: startDateTime ?? this.startDateTime,
-    endDateTime: endDateTime ?? this.endDateTime,
-    userId: userId ?? this.userId,
-    nationalId: nationalId ?? this.nationalId,
-  );
+PassModel copyWith({  String? id,
+  String? generatedDateTime,
+  bool? isValid,
+  bool? isApproved,
+  bool? isReoccurring,
+  String? startDateTime,
+  String? endDateTime,
+  String? userId,
+  String? nationalId,
+}) => PassModel(  id: id ?? this.id,
+  generatedDateTime: generatedDateTime ?? this.generatedDateTime,
+  isValid: isValid ?? this.isValid,
+  isApproved: isApproved ?? this.isApproved,
+  isReoccurring: isReoccurring ?? this.isReoccurring,
+  startDateTime: startDateTime ?? this.startDateTime,
+  endDateTime: endDateTime ?? this.endDateTime,
+  userId: userId ?? this.userId,
+  nationalId: nationalId ?? this.nationalId,
+);
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;

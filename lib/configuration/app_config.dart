@@ -28,6 +28,10 @@ dynamic get authUrl {
   return _config[_authUrl];
 }
 
+dynamic get passUrl {
+  return _config[_passUrl];
+}
+
 Map<String, dynamic> devConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
   _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
