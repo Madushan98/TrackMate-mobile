@@ -17,7 +17,6 @@ class _DashBordState extends State<DashBord> {
 
   @override
   Widget build(BuildContext context) {
-
     final _size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -34,7 +33,7 @@ class _DashBordState extends State<DashBord> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10.0,bottom: 20),
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 20),
                   child: Column(
                     children: [
                       Padding(
