@@ -1,5 +1,6 @@
 const _baseUrl = "baseUrl";
-const _authService = "user-service";
+const _authUrl = "user-service";
+const _passUrl = "pass-service";
 
 enum Environment { dev, stage, prod }
 
@@ -23,21 +24,25 @@ dynamic get apiBaseUrl {
   return _config[_baseUrl];
 }
 
-dynamic get userService {
-  return _config[_authService];
+dynamic get authUrl {
+  return _config[_authUrl];
 }
 
 Map<String, dynamic> devConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authService: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/"
+  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1"
 };
 
 Map<String, dynamic> stageConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authService: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/"
+  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1"
 };
 
 Map<String, dynamic> prodConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authService: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/"
+  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1"
 };
+
