@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../controllers/ScannerControllers/scanData_controller.dart';
+import '../../../routes/appPages.dart';
 import '../../../service/QrGeneration/ASEncryption.dart';
 
 class PassLogScreen extends StatefulWidget {
@@ -17,8 +21,8 @@ var data;
 bool hasdata = false;
 
 class _PassLogScreenState extends State<PassLogScreen> {
-  AESEncryption encryption = new AESEncryption();
 
+  final _scanDataController = Get.put(ScanDataController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,18 +32,16 @@ class _PassLogScreenState extends State<PassLogScreen> {
       ),
       body: Container(
         child: ListView.builder(
-    itemCount: _passController.passList.length,
+    itemCount: _scanDataController.passLogHistory.length,
     itemBuilder: (BuildContext context, int index) {
-    var pass = _passController.passList[index];
-    return InkWell(
-    onTap: () {
-    Get.toNamed(Routes.QrCodeScreen,
-    arguments: QrCodeScreen(
-    passId: pass.id!,
-    ));
-    },,
 
-      ),
-    );
+      return InkWell(
+        onTap: () {
+
+        },
+          child: Container(),
+      );
+    } )
+    ));
   }
 }

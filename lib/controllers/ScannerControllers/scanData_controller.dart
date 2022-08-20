@@ -1,3 +1,4 @@
+import 'package:covid_safe_app/models/PassData/PassHistoryModel.dart';
 import 'package:covid_safe_app/models/PassData/PassVerifyModel.dart';
 import 'package:covid_safe_app/service/Scanner/ScannerService.dart';
 import 'package:geolocator/geolocator.dart';
@@ -13,6 +14,7 @@ class ScanDataController extends GetxController with BaseController {
   var _scannerService = Get.find<ScannerService>();
   var _authService = Get.find<AuthService>();
   var isVerifying = false.obs;
+  var passLogHistory = RxList<PassHistoryModel>();
 
   @override
   void onInit() {
@@ -42,13 +44,14 @@ class ScanDataController extends GetxController with BaseController {
     return passVerificationData;
   }
 
-  Future<> getScanHistoryData(String token) async {
+  Future<List<PassHistoryModel>> getScanHistoryData(String token) async {
+    List<PassHistoryModel> passList = [];
     var passVerificationData = await _scannerService.getPassVerifiedData(token).catchError((error){
       isLoading.value = false;
       update();
     });
 
-    return passVerificationData;
+    return passList;
   }
 
   Future<bool> acceptPass() async {

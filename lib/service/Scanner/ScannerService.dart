@@ -23,19 +23,18 @@ class ScannerService extends GetxService {
 
 
   Future<List<PassHistoryModel>> getPassHistoryData(String scannerId) async {
+    List<PassHistoryModel> passList = [];
     var data = await BaseClient().get(
       passUrl,
       "PassLog-scanner/$scannerId",
     );
     final jsonData = jsonDecode(data);
 
-    jsonData.forEach(element){
 
-    }
 
     var passScanData = PassVerifyModel.fromJson(jsonData);
 
-    return passVerificationData;
+    return passList;
   }
 
 
