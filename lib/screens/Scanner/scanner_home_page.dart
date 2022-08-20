@@ -1,5 +1,6 @@
 import 'package:covid_safe_app/screens/home/Pages/account_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<ScannerHomePage>
   var selectedIndex = 0;
 
   final DashBoardController dashBoardController =
-  Get.put(DashBoardController());
+      Get.put(DashBoardController());
 
   onItemTap(int value) async {
     setState(() {
@@ -31,7 +32,6 @@ class _HomePageState extends State<ScannerHomePage>
     ScannerDashBord(),
     PassLogScreen(),
     AccountScreen()
-
   ];
 
   @override
@@ -45,24 +45,14 @@ class _HomePageState extends State<ScannerHomePage>
 
     return SafeArea(
       child: Scaffold(
-
         backgroundColor: Colors.white,
-
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black,
-                    offset: Offset(0, 4),
-                    blurRadius: 4)
-              ]
-          ),
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(color: Colors.black, offset: Offset(0, 4), blurRadius: 4)
+          ]),
           child: Material(
-
-            color:Colors.white,
+            color: Colors.white,
             child: BottomNavigationBar(
-
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -71,13 +61,12 @@ class _HomePageState extends State<ScannerHomePage>
                   ),
                   label: 'DashBord',
                 ),
-
                 BottomNavigationBarItem(
                   icon: Icon(
                     Icons.qr_code_2_rounded,
                     size: 25,
                   ),
-                  label: 'Pass',
+                  label: 'PassLog',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -90,7 +79,7 @@ class _HomePageState extends State<ScannerHomePage>
               type: BottomNavigationBarType.shifting,
               unselectedItemColor: Colors.black,
               selectedIconTheme:
-              IconThemeData(color: Colors.yellow[800], size: 25),
+                  IconThemeData(color: Colors.yellow[800], size: 25),
               selectedItemColor: Colors.yellow[800],
               selectedLabelStyle: TextStyle(fontWeight: FontWeight.w400),
               currentIndex: selectedIndex,
@@ -104,7 +93,7 @@ class _HomePageState extends State<ScannerHomePage>
             ),
           ),
         ),
-        body:  _pages.elementAt(selectedIndex),
+        body: _pages.elementAt(selectedIndex),
       ),
     );
   }

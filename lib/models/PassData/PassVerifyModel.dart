@@ -1,10 +1,13 @@
 /// id : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-/// generatedDateTime : "2022-08-19T13:22:29.242Z"
+/// generatedDateTime : "2022-08-19T21:12:47.335Z"
 /// isValid : true
+/// passCategory : "string"
+/// from : "string"
+/// to : "string"
 /// isApproved : true
 /// isReoccurring : true
-/// startDateTime : "2022-08-19T13:22:29.242Z"
-/// endDateTime : "2022-08-19T13:22:29.242Z"
+/// startDateTime : "2022-08-19T21:12:47.335Z"
+/// endDateTime : "2022-08-19T21:12:47.335Z"
 /// userId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 /// nationalId : "string"
 
@@ -13,6 +16,9 @@ class PassVerifyModel {
       this.id, 
       this.generatedDateTime, 
       this.isValid, 
+      this.passCategory, 
+      this.from, 
+      this.to, 
       this.isApproved, 
       this.isReoccurring, 
       this.startDateTime, 
@@ -24,6 +30,9 @@ class PassVerifyModel {
     id = json['id'];
     generatedDateTime = json['generatedDateTime'];
     isValid = json['isValid'];
+    passCategory = json['passCategory'];
+    from = json['from'];
+    to = json['to'];
     isApproved = json['isApproved'];
     isReoccurring = json['isReoccurring'];
     startDateTime = json['startDateTime'];
@@ -34,6 +43,9 @@ class PassVerifyModel {
   String? id;
   String? generatedDateTime;
   bool? isValid;
+  String? passCategory;
+  String? from;
+  String? to;
   bool? isApproved;
   bool? isReoccurring;
   String? startDateTime;
@@ -43,6 +55,9 @@ class PassVerifyModel {
 PassVerifyModel copyWith({  String? id,
   String? generatedDateTime,
   bool? isValid,
+  String? passCategory,
+  String? from,
+  String? to,
   bool? isApproved,
   bool? isReoccurring,
   String? startDateTime,
@@ -52,6 +67,9 @@ PassVerifyModel copyWith({  String? id,
 }) => PassVerifyModel(  id: id ?? this.id,
   generatedDateTime: generatedDateTime ?? this.generatedDateTime,
   isValid: isValid ?? this.isValid,
+  passCategory: passCategory ?? this.passCategory,
+  from: from ?? this.from,
+  to: to ?? this.to,
   isApproved: isApproved ?? this.isApproved,
   isReoccurring: isReoccurring ?? this.isReoccurring,
   startDateTime: startDateTime ?? this.startDateTime,
@@ -64,6 +82,9 @@ PassVerifyModel copyWith({  String? id,
     map['id'] = id;
     map['generatedDateTime'] = generatedDateTime;
     map['isValid'] = isValid;
+    map['passCategory'] = passCategory;
+    map['from'] = from;
+    map['to'] = to;
     map['isApproved'] = isApproved;
     map['isReoccurring'] = isReoccurring;
     map['startDateTime'] = startDateTime;

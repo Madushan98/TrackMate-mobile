@@ -30,6 +30,29 @@ class _ScannerDashBordState extends State<ScannerDashBord> {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 20.0),
+        child: Container(
+          width: 60,
+          height: 60,
+          child: FloatingActionButton(
+            backgroundColor: Colors.grey[900],
+            child: Icon(
+              Icons.qr_code_scanner,
+              size: 30,
+              color: Colors.yellow[800],
+            ),
+            onPressed: () async {
+              var data = await FlutterBarcodeScanner.scanBarcode(
+                  "red", "Cancel", true, ScanMode.QR);
+
+              if (data.isNotEmpty) {
+                _scannerDashboardController.getScanData(data);
+              }
+            },
+          ),
+        ),
+      ),
       body: SingleChildScrollView(child: Container(
         child: Obx(() {
           return Column(
@@ -97,48 +120,48 @@ class _ScannerDashBordState extends State<ScannerDashBord> {
               SizedBox(
                 height: 40,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Material(
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  color: Colors.grey[900],
-                  child: Container(
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 20),
-                    height: 60,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Scan User for Pass Scan",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: _size.height * 0.02),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              var data =
-                                  await FlutterBarcodeScanner.scanBarcode(
-                                      "red", "Cancel", true, ScanMode.QR);
-                              setState(() {});
-                            },
-                            child: Icon(
-                              Icons.qr_code_scanner,
-                              size: 40,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: Material(
+              //     elevation: 3,
+              //     shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(10)),
+              //     color: Colors.grey[900],
+              //     child: Container(
+              //       padding: const EdgeInsets.only(top: 10.0, bottom: 20),
+              //       height: 60,
+              //       child: Padding(
+              //         padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              //         child: Row(
+              //           crossAxisAlignment: CrossAxisAlignment.center,
+              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //           children: [
+              //             Text(
+              //               "Scan User for Pass Scan",
+              //               style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.w400,
+              //                   fontSize: _size.height * 0.02),
+              //             ),
+              //             InkWell(
+              //               onTap: () async {
+              //                 var data =
+              //                     await FlutterBarcodeScanner.scanBarcode(
+              //                         "red", "Cancel", true, ScanMode.QR);
+              //                 setState(() {});
+              //               },
+              //               child: Icon(
+              //                 Icons.qr_code_scanner,
+              //                 size: 40,
+              //                 color: Colors.white,
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           );
         }),
