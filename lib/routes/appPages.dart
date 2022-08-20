@@ -1,4 +1,5 @@
 import 'package:covid_safe_app/routes/guards/roleGuard.dart';
+import 'package:covid_safe_app/screens/Scanner/Pages/scanner_data_screen.dart';
 import 'package:covid_safe_app/screens/Scanner/scanner_home_page.dart';
 import 'package:covid_safe_app/screens/home/home_page.dart';
 import 'package:covid_safe_app/screens/qrCode/qr_screen.dart';
@@ -26,11 +27,10 @@ class AppPages {
       page: () => LoginScreen(),
     ),
     GetPage(
-      name: Routes.HOME,
-      page: () => HomePage(),
-      transitionDuration: Duration(microseconds: 100),
-      middlewares: [PremiumGuard(), UserGuard()]
-    ),
+        name: Routes.HOME,
+        page: () => HomePage(),
+        transitionDuration: Duration(microseconds: 100),
+        middlewares: [PremiumGuard(), UserGuard()]),
     GetPage(
       name: Routes.SignUp,
       page: () => RegisterScreen(),
@@ -52,7 +52,13 @@ class AppPages {
         transitionDuration: Duration(microseconds: 100),
         page: () => ScannerHomePage(),
         middlewares: [PremiumGuard(), ScannerGuard()]),
-
-
+    GetPage(
+        name: Routes.ScanData,
+        transitionDuration: Duration(microseconds: 100),
+        page: () {
+          ScanDataScreen _scanDataScreen =  Get.arguments;
+          return _scanDataScreen;
+        },
+        middlewares: [PremiumGuard(), ScannerGuard()]),
   ];
 }

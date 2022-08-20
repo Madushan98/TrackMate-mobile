@@ -9,4 +9,5 @@ abstract class Routes {
   static const Login  = '/login';
   static const QrCodeScreen = '/qrCode_screen';
   static const Scanner = '/scanner';
+  static const ScanData = '/scanner-data';
 }
