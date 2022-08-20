@@ -1,12 +1,14 @@
+import 'package:covid_safe_app/controllers/baseController.dart';
 import 'package:covid_safe_app/models/Auth/LoginModel.dart';
 import 'package:covid_safe_app/service/Authentication/RoleService.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../routes/appPages.dart';
 import '../../service/Authentication/AuthService.dart';
 
-class LoginController extends GetxController {
+class LoginController extends GetxController with BaseController {
   var isLogging = false.obs;
   var errorMessage = "".obs;
   var isError = false;
@@ -30,10 +32,13 @@ class LoginController extends GetxController {
       var loginModel = new LoginModel(
           nationalId: nationalId.value, password: password.value);
 
-      var isLogged = await _authService.logIn(loginModel, context);
-      var userRole = await  _roleService.setUserRole();
+      var isLogged =
+          await _authService.logIn(loginModel, context).catchError((error) {
+        handleError(error, context);
+      });
+      var userRole = await _roleService.setUserRole();
       print(userRole);
-      if (isLogged) {
+      if (isLogged!) {
         Get.offAllNamed(Routes.HOME);
       }
     } catch (e) {

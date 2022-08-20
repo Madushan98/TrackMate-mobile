@@ -4,17 +4,18 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class CustomNumphoricWidget extends StatelessWidget {
   const CustomNumphoricWidget({
-    Key? key, required this.onTap,
+    Key? key,
+    required this.onTap,
+    this.icon = Icons.arrow_forward,
   }) : super(key: key);
 
-
   final Function onTap;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
         child: Row(
           children: [
@@ -24,10 +25,10 @@ class CustomNumphoricWidget extends StatelessWidget {
                 child: NeumorphicButton(
                   margin: EdgeInsets.only(top: 12),
                   onPressed: () {
-                     onTap();
+                    onTap();
                   },
                   child: Icon(
-                    Icons.arrow_forward,
+                    icon,
                     color: Colors.white,
                     size: 30,
                   ),
@@ -58,8 +59,7 @@ class CustomButtonWidget2 extends StatelessWidget {
         height: 40,
         width: 80,
         child: Row(
-          crossAxisAlignment:
-          CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
@@ -77,8 +77,7 @@ class CustomButtonWidget2 extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            color: Color(0xFF252525),
-            borderRadius: BorderRadius.circular(10)),
+            color: Color(0xFF252525), borderRadius: BorderRadius.circular(10)),
       ),
     );
   }

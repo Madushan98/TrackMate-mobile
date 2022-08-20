@@ -8,13 +8,14 @@ class AuthToggleButtonWidget extends StatefulWidget {
     Key? key,
     required Size size,
     required this.updateValue,
-    required this.data,
+    required this.data,  this.initialIndex = 0,
   })  : _size = size,
         super(key: key);
 
   final Size _size;
   final List<String> data;
   final Function updateValue;
+  final int initialIndex;
 
   @override
   State<AuthToggleButtonWidget> createState() => _AuthToggleButtonWidgetState();
@@ -37,7 +38,7 @@ class _AuthToggleButtonWidgetState extends State<AuthToggleButtonWidget> {
               inactiveBgColor: Color(0xFFC4C4C4).withOpacity(0.25),
               minHeight: 60,
               minWidth: 80,
-              initialLabelIndex: 0,
+              initialLabelIndex: widget.initialIndex,
               totalSwitches:widget.data.length,
               labels: widget.data,
               onToggle: (index) {

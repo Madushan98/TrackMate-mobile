@@ -47,7 +47,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           Container(
                             child: ProfileAvatar(
                               imageUrl: imageUrl,
-                              size: 30,
+                              size: 25,
                             ),
                           ),
                           Column(
@@ -306,7 +306,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "LogOut",
+                                          "Logout",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w400,

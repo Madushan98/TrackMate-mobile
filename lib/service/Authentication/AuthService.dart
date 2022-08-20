@@ -15,7 +15,7 @@ class AuthService extends GetxService {
   bool isAuthenticated = false;
   late AuthModel authDetails;
 
-  Future<bool> logIn(LoginModel loginRequest, BuildContext context) async {
+  Future<bool?> logIn(LoginModel loginRequest, BuildContext context) async {
     var response = await BaseClient().post(authUrl, "login", loginRequest);
     if (response != null) {
       print(response);

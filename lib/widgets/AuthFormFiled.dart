@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthFormFieldWidget extends StatelessWidget {
@@ -12,6 +11,7 @@ class AuthFormFieldWidget extends StatelessWidget {
     required this.updateValue,
     this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     this.setObscureText = false,
+    this.customValidator,
   })  : _size = size,
         super(key: key);
 
@@ -23,6 +23,7 @@ class AuthFormFieldWidget extends StatelessWidget {
   final TextInputType textInputType;
   final String hintText;
   final Function updateValue;
+  final String? Function(String?)? customValidator;
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +47,21 @@ class AuthFormFieldWidget extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 5.0, vertical: 10),
                       child: TextFormField(
-                        autovalidateMode:
-                        AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter details';
-                          } else if (value.contains('@')) {
-                            return 'Please don\'t use the @ char.';
-                          }
-                          return null;
-                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: customValidator ??
+                            (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter details';
+                              }
+                              return null;
+                            },
                         obscureText: setObscureText,
                         keyboardType: textInputType,
                         initialValue: initValue,
                         style: TextStyle(),
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.only(bottom: 0.0, top: 0.0),
+                          contentPadding:
+                              const EdgeInsets.only(bottom: 0.0, top: 0.0),
                           errorStyle: TextStyle(
                             fontSize: 10.0,
                           ),
