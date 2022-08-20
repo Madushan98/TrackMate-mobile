@@ -1,5 +1,6 @@
 import 'package:covid_safe_app/controllers/passControllers/pass-manger_controller.dart';
 import 'package:covid_safe_app/controllers/passControllers/qr_controller.dart';
+import 'package:covid_safe_app/models/PassData/PassModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -93,8 +94,8 @@ class _PassScreenState extends State<PassScreen> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 20),
                           child: Container(
-                            height: _size.height*0.8,
-                            width:  _size.height,
+                            height: _size.height * 0.8,
+                            width: _size.height,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -144,14 +145,14 @@ class _PassScreenState extends State<PassScreen> {
                                                     MainAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    "QR Code For work Transportation",
+                                                    "${pass.passCategory}",
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 20),
                                                   ),
                                                   Text(
-                                                      "Last Updated : 2022-12-18 5.00 PM")
+                                                      "Generated Time : ${pass.generatedDateTime}")
                                                 ],
                                               ),
                                             ),

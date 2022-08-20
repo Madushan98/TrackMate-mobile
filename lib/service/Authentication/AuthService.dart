@@ -15,6 +15,8 @@ class AuthService extends GetxService {
   bool isAuthenticated = false;
   late AuthModel authDetails;
 
+
+
   Future<bool?> logIn(LoginModel loginRequest, BuildContext context) async {
     var response = await BaseClient().post(authUrl, "login", loginRequest);
     if (response != null) {
@@ -39,6 +41,7 @@ class AuthService extends GetxService {
       final jsonData = jsonDecode(response);
       authDetails = AuthModel.fromJson(jsonData);
       var userDetails = authDetails.user;
+      await setAuthToken(authDetails.token!);
       setUserDetails(jsonEncode(userDetails));
       return true;
     }

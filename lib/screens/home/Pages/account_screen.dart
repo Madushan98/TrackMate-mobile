@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../configuration/app_constants.dart';
 import '../../../controllers/accountController/account_controller.dart';
 import '../../../widgets/profileAvatar.dart';
 
@@ -11,9 +12,6 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  String imageUrl =
-      'https://www.mei.edu/sites/default/files/styles/featured_image_article/public/2019-12/Photo%20by%20Tharaka%20Basnayaka%20_%20NurPhoto%20via%20Getty%20Images.jpg?itok=gCDI1Yaw';
-
   final _accountController = Get.put(AccountController());
 
   @override
@@ -46,7 +44,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           ),
                           Container(
                             child: ProfileAvatar(
-                              imageUrl: imageUrl,
+                              imageUrl: Constants.imageUrl,
                               size: 25,
                             ),
                           ),
@@ -118,12 +116,18 @@ class _AccountScreenState extends State<AccountScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          "Update User Details",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 15),
+                                        InkWell(
+                                          onTap: () {
+                                            _accountController
+                                                .goToUserDetails();
+                                          },
+                                          child: Text(
+                                            "Update User Details",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 15),
+                                          ),
                                         ),
                                         Text(
                                           "Update User Details",

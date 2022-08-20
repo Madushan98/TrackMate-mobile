@@ -145,6 +145,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         value;
                                     _registerController.update();
                                   },
+                                  customValidator: (value) {
+                                    String pattern =
+                                        r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                                    RegExp regExp = new RegExp(pattern);
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter details';
+                                    } else if (!regExp.hasMatch(value))
+                                      return 'Enter Valid Phone Number';
+                                  },
                                 ),
                                 AuthFormFieldWidget(
                                   size: _size,
@@ -194,10 +203,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             )
                           : CustomNumphoricWidget(
                               onTap: () {
-                                if (_registerController.confirmPassword ==
-                                    _registerController.password) {
                                   _registerController.registerUser(context);
-                                }
                               },
                             ),
                       Expanded(

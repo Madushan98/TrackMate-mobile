@@ -24,17 +24,30 @@ class RegistrationController extends GetxController with BaseController {
   Future registerUser(BuildContext context) async {
     isRegistering.value = true;
     bool isSuccess = false;
-    registerErrorHandler(context);
+    if (password.value != confirmPassword.value) {
+      LoadingStatus.showErroDialog(
+          description: "passwords does not match", context: context);
+      isRegistering.value = false;
+      update();
+      return null ;
+    }
+    if (nationalId == "" || password == "" || fullName == "") {
+      LoadingStatus.showErroDialog(
+          description: "Enter required values", context: context);
+      isRegistering.value = false;
+      update();
+      return null;
+    }
     try {
       var registrationRequest = new RegistrationModel(
         nationalId: nationalId.value,
+        fullName: fullName.value,
+        primaryContactNumber: mobileNumber.value,
         password: password.value,
         age: age.value,
         gender: gender.value,
       );
-      print(registrationRequest);
       var payload = json.encode(registrationRequest);
-      print(payload);
       isSuccess = await _authService
           .registerUser(registrationRequest)
           .catchError((error) {
@@ -45,17 +58,6 @@ class RegistrationController extends GetxController with BaseController {
     update();
     if (isSuccess) {
       Get.offAllNamed(Routes.HOME);
-    }
-  }
-
-  registerErrorHandler(BuildContext context) {
-    if (password.value != confirmPassword.value) {
-      LoadingStatus.showErroDialog(
-          description: "passwords does not match", context: context);
-    }
-    if (nationalId == "" || password == "" || fullName == "") {
-      LoadingStatus.showErroDialog(
-          description: "Enter required values", context: context);
     }
   }
 }

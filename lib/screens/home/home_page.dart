@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Pages/notification_screen.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -31,10 +33,9 @@ class _HomePageState extends State<HomePage>
   static List<Widget> _pages = <Widget>[
     DashBord(),
     LocationScreen(),
-    DashBord(),
+    NotificationScreen(),
     PassScreen(),
     AccountScreen()
-
   ];
 
   @override
@@ -48,24 +49,14 @@ class _HomePageState extends State<HomePage>
 
     return SafeArea(
       child: Scaffold(
-
         backgroundColor: Colors.white,
-
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black,
-                    offset: Offset(0, 4),
-                    blurRadius: 4)
-              ]
-          ),
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(color: Colors.black, offset: Offset(0, 4), blurRadius: 4)
+          ]),
           child: Material(
-
-            color:Colors.white,
+            color: Colors.white,
             child: BottomNavigationBar(
-
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -120,7 +111,7 @@ class _HomePageState extends State<HomePage>
             ),
           ),
         ),
-        body:  _pages.elementAt(selectedIndex),
+        body: _pages.elementAt(selectedIndex),
       ),
     );
   }

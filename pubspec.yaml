@@ -47,6 +47,7 @@ dependencies:
   jwt_decoder: ^2.0.1
   flutter_secure_storage: ^6.0.0
   awesome_snackbar_content: ^0.0.8
+  geolocator: ^9.0.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
   assets:
      - assets/images/welcome/
      - assets/images/user/
+     - assets/images/dash/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

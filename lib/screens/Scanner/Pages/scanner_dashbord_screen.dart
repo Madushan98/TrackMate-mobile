@@ -1,10 +1,15 @@
 import 'package:covid_safe_app/controllers/ScannerControllers/scanner_dashboard_controller.dart';
+import 'package:covid_safe_app/screens/CovidData/covid_data_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../../configuration/styles/colors.dart';
+import '../../../routes/appPages.dart';
+import '../../../widgets/counter.dart';
 import '../../../widgets/profileAvatar.dart';
 
 class ScannerDashBord extends StatefulWidget {
@@ -45,8 +50,9 @@ class _ScannerDashBordState extends State<ScannerDashBord> {
             onPressed: () async {
               var data = await FlutterBarcodeScanner.scanBarcode(
                   "red", "Cancel", true, ScanMode.QR);
-
-              if (data.isNotEmpty) {
+              if(data == "-1"){
+                Get.toNamed(Routes.Scanner);
+              }else if (data.isNotEmpty) {
                 _scannerDashboardController.getScanData(data);
               }
             },
@@ -118,50 +124,9 @@ class _ScannerDashBordState extends State<ScannerDashBord> {
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 20,
               ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 10),
-              //   child: Material(
-              //     elevation: 3,
-              //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(10)),
-              //     color: Colors.grey[900],
-              //     child: Container(
-              //       padding: const EdgeInsets.only(top: 10.0, bottom: 20),
-              //       height: 60,
-              //       child: Padding(
-              //         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              //         child: Row(
-              //           crossAxisAlignment: CrossAxisAlignment.center,
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             Text(
-              //               "Scan User for Pass Scan",
-              //               style: TextStyle(
-              //                   color: Colors.white,
-              //                   fontWeight: FontWeight.w400,
-              //                   fontSize: _size.height * 0.02),
-              //             ),
-              //             InkWell(
-              //               onTap: () async {
-              //                 var data =
-              //                     await FlutterBarcodeScanner.scanBarcode(
-              //                         "red", "Cancel", true, ScanMode.QR);
-              //                 setState(() {});
-              //               },
-              //               child: Icon(
-              //                 Icons.qr_code_scanner,
-              //                 size: 40,
-              //                 color: Colors.white,
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // )
+              CovidDataScreen(),
             ],
           );
         }),

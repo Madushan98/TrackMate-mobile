@@ -7,6 +7,7 @@ import 'package:covid_safe_app/screens/SplashScreen/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'dart:core';
 import '../screens/SplashScreen/splashScreeen.dart';
+import '../screens/account/user_page_screen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/register_Screen.dart';
 import 'guards/primaryGuard.dart';
@@ -56,9 +57,14 @@ class AppPages {
         name: Routes.ScanData,
         transitionDuration: Duration(microseconds: 100),
         page: () {
-          ScanDataScreen _scanDataScreen =  Get.arguments;
+          ScanDataScreen _scanDataScreen = Get.arguments;
           return _scanDataScreen;
         },
         middlewares: [PremiumGuard(), ScannerGuard()]),
+    GetPage(
+      name: Routes.User,
+      page: () => UserPage(),
+      transitionDuration: Duration(microseconds: 10),
+    ),
   ];
 }

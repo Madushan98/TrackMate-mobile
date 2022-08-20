@@ -2,5 +2,19 @@ import 'package:flutter/material.dart';
 
 Color kPrimaryColor = Color.fromRGBO(3, 120, 221, 1);
 Color kPrimaryColorShadow = Color.fromRGBO(3, 120, 221, .2);
-
-
+const dashTextColor = Color(0xFF303030);
+const kBackgroundColor = Color(0xFFFEFEFE);
+const kTitleTextColor = Color(0xFF303030);
+const kBodyTextColor = Color(0xFF4B4B4B);
+const kTextLightColor = Color(0xFF959595);
+const kInfectedColor = Color(0xFFFF8748);
+const kDeathColor = Color(0xFFFF4848);
+const kRecovercolor = Color(0xFF36C12C);
+final kShadowColor = Color(0xFFB7B7B7).withOpacity(.16);
+final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
+const dashTextstyle = TextStyle(
+  fontSize: 18,
+  color: dashTextColor,
+  fontWeight: FontWeight.bold,
+);
+const kSubTextStyle = TextStyle(fontSize: 16, color: kTextLightColor);
