@@ -6,11 +6,12 @@ class CustomNumphoricWidget extends StatelessWidget {
   const CustomNumphoricWidget({
     Key? key,
     required this.onTap,
-    this.icon = Icons.arrow_forward,
+    this.icon = Icons.arrow_forward, this.sizeVal = 30.0,
   }) : super(key: key);
 
   final Function onTap;
   final IconData icon;
+  final double sizeVal;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class CustomNumphoricWidget extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: Colors.white,
-                    size: 30,
+                    size: sizeVal,
                   ),
                   style: NeumorphicStyle(
                     color: Colors.black,

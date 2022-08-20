@@ -10,4 +10,5 @@ abstract class Routes {
   static const QrCodeScreen = '/qrCode_screen';
   static const Scanner = '/scanner';
   static const ScanData = '/scanner-data';
+  static const User = '/user';
 }

@@ -19,17 +19,17 @@ class ScanDataScreen extends StatefulWidget {
 }
 
 class _ScanDataScreenState extends State<ScanDataScreen> {
-
   final _scanDataController = Get.put(ScanDataController());
 
   @override
   void initState() {
-    _scanDataController.getVerificationData(widget.verifyToken);
+    _scanDataController.setData(widget.verifyToken);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
@@ -37,81 +37,273 @@ class _ScanDataScreenState extends State<ScanDataScreen> {
       ),
       body: Container(
         child: Obx(() {
-          return Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Text("User ID",
-                          style: TextStyle(
-
+          return SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  _scanDataController.isLoading.value
+                      ? Container(
+                          height: _size.height * 0.6,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 20),
+                            child: Container(
+                              height: _size.height * 0.8,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircularProgressIndicator(
+                                    color: Colors.grey[900],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text("982351123V")
-                        ],
+                        )
+                      : _scanDataController.scanData.value.nationalId ==null
+                          ?Container(
+                    height: _size.height * 0.8,
+                    child: Center(
+                      child: Text(
+                        "User Verification Failed"
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text("User ID"),
-                          SizedBox(
-                            width: 20,
+                  ) : Container(
+                              height: _size.height * 0.6,
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "${_scanDataController.scanData.value.passCategory} Pass",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Created Time :",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(
+                                          _scanDataController.scanData.value
+                                                  .generatedDateTime ??
+                                              "No Information",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "User National ID :",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(
+                                          _scanDataController
+                                                  .scanData.value.nationalId ??
+                                              "No Information",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Full Name :",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(
+                                          _scanDataController
+                                                  .scanData.value.fullName ??
+                                              "No Information",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Contact Number :",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(
+                                          _scanDataController.scanData.value
+                                                  .primaryContactNumber ??
+                                              "No Information",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "From  -  ${_scanDataController.scanData.value.from}",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 80,
+                                        ),
+                                        Text(
+                                          "To -  ${_scanDataController.scanData.value.to}",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ) ,
+                  _scanDataController.isVerifying.value ? Container(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 20),
+                          child: Container(
+                            height: _size.height * 0.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  color: Colors.grey[900],
+                                ),
+                              ],
+                            ),
                           ),
-                          Text("982351123V")
-                        ],
-                      ),
+                        ),
+                        Container(
+                          child: Text(
+                            "Accept Pass"
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text("User ID"),
-                          SizedBox(
-                            width: 20,
+                  ) : Container(),
+
+
+                  Container(
+                    height: _size.height * 0.1,
+                  ),
+                  Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: CustomNumphoricWidget(
+                              sizeVal: 40,
+                              icon: Icons.close,
+                              onTap: () {
+                         _scanDataController.failedVerification();
+                              },
+                            ),
                           ),
-                          Text("982351123V")
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        ),
+                        Expanded(flex: 1, child: Container()),
+                        Expanded(
+                          flex: 1,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Center(
+                              child: CustomNumphoricWidget(
+                                sizeVal: 40,
+                                icon: Icons.check,
+                                onTap: () {
+                                  _scanDataController.acceptPass();
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Text(_scanDataController.scanData.value),
-
-              Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomNumphoricWidget(
-                      icon: Icons.close,
-                      onTap: () {
-                        //  _authController.getUser();
-
-                      },
-                    ),
-                    CustomNumphoricWidget(
-                      icon: Icons.check,
-                      onTap: () {
-                        //  _authController.getUser();
-
-                      },
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
           );
         }),
       ),

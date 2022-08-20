@@ -21,65 +21,24 @@ class _PassLogScreenState extends State<PassLogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: "Scan QR",
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      qrData,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.launch_outlined),
-                      onPressed: hasdata
-                          ? () async {
-                              if (await canLaunch(qrData)) {
-                                print(qrData);
-                                await launch(qrData);
-                              } else {
-                                throw 'Could not launch ';
-                              }
-                            }
-                          : null,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Container(
-                  width: ((MediaQuery.of(context).size.width) / 2) - 45,
-                  height: 35,
-                  child: ElevatedButton(
-                    child: Text(
-                      "Scan QR",
-                      style: TextStyle(fontSize: 17),
-                    ),
-                    onPressed: () async {
-                      var data = await FlutterBarcodeScanner.scanBarcode(
-                          "red", "Cancel", true, ScanMode.QR);
-                      setState(() {
-                        qrData = data.toString();
-                        hasdata = true;
-                        qrData = encryption
-                            .decryptMsg(encryption.getCode(qrData))
-                            .toString();
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[900],
+        title: Center(child: Text("Pass Logs")),
+      ),
+      body: Container(
+        child: ListView.builder(
+    itemCount: _passController.passList.length,
+    itemBuilder: (BuildContext context, int index) {
+    var pass = _passController.passList[index];
+    return InkWell(
+    onTap: () {
+    Get.toNamed(Routes.QrCodeScreen,
+    arguments: QrCodeScreen(
+    passId: pass.id!,
+    ));
+    },,
+
       ),
     );
   }

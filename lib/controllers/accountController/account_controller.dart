@@ -26,6 +26,10 @@ class AccountController extends GetxController {
     update();
   }
 
+  goToUserDetails() {
+    Get.toNamed(Routes.User);
+  }
+
   Future<void> logOut() async {
     _authService.LogOut();
     Get.offAllNamed(Routes.Login);

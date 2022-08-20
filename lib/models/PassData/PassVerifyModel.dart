@@ -1,15 +1,18 @@
-/// id : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-/// generatedDateTime : "2022-08-19T21:12:47.335Z"
+/// id : "22222221-1111-1111-1111-111111111111"
+/// generatedDateTime : "2022-08-19T21:09:28.565401Z"
 /// isValid : true
-/// passCategory : "string"
-/// from : "string"
-/// to : "string"
+/// passCategory : "Employee"
+/// from : "Rathnapura"
+/// to : "Colombo"
 /// isApproved : true
-/// isReoccurring : true
-/// startDateTime : "2022-08-19T21:12:47.335Z"
-/// endDateTime : "2022-08-19T21:12:47.335Z"
-/// userId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-/// nationalId : "string"
+/// isReoccurring : false
+/// startDateTime : "0001-01-01T00:00:00"
+/// endDateTime : "0001-01-01T00:00:00"
+/// userId : "11111111-1111-1111-1111-111111111111"
+/// nationalId : "982351123V"
+/// fullName : "Admin"
+/// primaryContactNumber : null
+/// isVerifiedUser : true
 
 class PassVerifyModel {
   PassVerifyModel({
@@ -24,7 +27,10 @@ class PassVerifyModel {
       this.startDateTime, 
       this.endDateTime, 
       this.userId, 
-      this.nationalId,});
+      this.nationalId, 
+      this.fullName, 
+      this.primaryContactNumber, 
+      this.isVerifiedUser,});
 
   PassVerifyModel.fromJson(dynamic json) {
     id = json['id'];
@@ -39,6 +45,9 @@ class PassVerifyModel {
     endDateTime = json['endDateTime'];
     userId = json['userId'];
     nationalId = json['nationalId'];
+    fullName = json['fullName'];
+    primaryContactNumber = json['primaryContactNumber'];
+    isVerifiedUser = json['isVerifiedUser'];
   }
   String? id;
   String? generatedDateTime;
@@ -52,6 +61,9 @@ class PassVerifyModel {
   String? endDateTime;
   String? userId;
   String? nationalId;
+  String? fullName;
+  dynamic primaryContactNumber;
+  bool? isVerifiedUser;
 PassVerifyModel copyWith({  String? id,
   String? generatedDateTime,
   bool? isValid,
@@ -64,6 +76,9 @@ PassVerifyModel copyWith({  String? id,
   String? endDateTime,
   String? userId,
   String? nationalId,
+  String? fullName,
+  dynamic primaryContactNumber,
+  bool? isVerifiedUser,
 }) => PassVerifyModel(  id: id ?? this.id,
   generatedDateTime: generatedDateTime ?? this.generatedDateTime,
   isValid: isValid ?? this.isValid,
@@ -76,6 +91,9 @@ PassVerifyModel copyWith({  String? id,
   endDateTime: endDateTime ?? this.endDateTime,
   userId: userId ?? this.userId,
   nationalId: nationalId ?? this.nationalId,
+  fullName: fullName ?? this.fullName,
+  primaryContactNumber: primaryContactNumber ?? this.primaryContactNumber,
+  isVerifiedUser: isVerifiedUser ?? this.isVerifiedUser,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -91,6 +109,9 @@ PassVerifyModel copyWith({  String? id,
     map['endDateTime'] = endDateTime;
     map['userId'] = userId;
     map['nationalId'] = nationalId;
+    map['fullName'] = fullName;
+    map['primaryContactNumber'] = primaryContactNumber;
+    map['isVerifiedUser'] = isVerifiedUser;
     return map;
   }
 

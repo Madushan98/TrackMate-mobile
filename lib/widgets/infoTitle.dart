@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class InfomationTitleWidget extends StatelessWidget {
   const InfomationTitleWidget({
     Key? key,
@@ -15,11 +14,13 @@ class InfomationTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0,),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+        ),
         child: Text(
           value,
           style: TextStyle(
-              color: Colors.grey[500], fontSize: 16, fontWeight: FontWeight.w300),
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),
         ),
       ),
     );

@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../../configuration/app_constants.dart';
+import '../../../configuration/styles/colors.dart';
+import '../../../controllers/accountController/account_controller.dart';
+import '../../../widgets/counter.dart';
 import '../../../widgets/profileAvatar.dart';
+import '../../CovidData/covid_data_screen.dart';
 
 class DashBord extends StatefulWidget {
   const DashBord({Key? key}) : super(key: key);
@@ -12,8 +19,7 @@ class DashBord extends StatefulWidget {
 }
 
 class _DashBordState extends State<DashBord> {
-  String imageUrl =
-      'https://img.freepik.com/free-photo/handsome-young-businessman-shirt-eyeglasses_85574-6228.jpg?size=626&ext=jpg';
+  final _accountController = Get.put(AccountController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class _DashBordState extends State<DashBord> {
                             Expanded(
                               flex: 10,
                               child: Text(
-                                "Madushan",
+                                _accountController.userName.value,
                                 style: TextStyle(
                                     fontSize: _size.height * 0.02,
                                     color: Colors.white),
@@ -54,7 +60,7 @@ class _DashBordState extends State<DashBord> {
                             Expanded(
                                 flex: 2,
                                 child: ProfileAvatar(
-                                  imageUrl: imageUrl,
+                                  imageUrl: Constants.imageUrl,
                                   size: 20,
                                 )),
                           ],
@@ -118,12 +124,21 @@ class _DashBordState extends State<DashBord> {
                             ],
                           ),
                         ),
-                      )
+                      ),
+
+
+
+
+
                     ],
                   ),
                 ),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            CovidDataScreen(),
           ],
         ),
       )),

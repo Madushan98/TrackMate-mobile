@@ -15,7 +15,7 @@
 
 class User {
   User({
-
+      this.id,
       this.nationalId, 
       this.fullName, 
       this.town, 
@@ -28,7 +28,7 @@ class User {
       this.userType,});
 
   User.fromJson(dynamic json) {
-
+    id = json["id"];
     nationalId = json['nationalId'];
     fullName = json['fullName'];
     town = json['town'];
@@ -41,6 +41,7 @@ class User {
     userType = json['userType'];
   }
 
+  String? id;
   String? nationalId;
   String? fullName;
   String? town;
@@ -66,6 +67,7 @@ User copyWith({  String? id,
   String? userType,
 
 }) => User(
+  id: id ?? this.id,
   nationalId: nationalId ?? this.nationalId,
   fullName: fullName ?? this.fullName,
   town: town ?? this.town,
@@ -80,6 +82,7 @@ User copyWith({  String? id,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
+    map['id'] = id;
     map['nationalId'] = nationalId;
     map['fullName'] = fullName;
     map['town'] = town;
