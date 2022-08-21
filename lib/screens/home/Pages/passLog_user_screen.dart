@@ -7,23 +7,30 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../controllers/ScannerControllers/scanData_controller.dart';
-import '../../../routes/appPages.dart';
-import '../../../service/QrGeneration/ASEncryption.dart';
+import '../../../../controllers/ScannerControllers/scanData_controller.dart';
+import '../../../../routes/appPages.dart';
+import '../../../../service/QrGeneration/ASEncryption.dart';
+import '../../../controllers/passControllers/user_pass_history_controller.dart';
 
-class PassLogScreen extends StatefulWidget {
-  PassLogScreen({Key? key}) : super(key: key);
+class PassLogUserScreen extends StatefulWidget {
+  PassLogUserScreen({Key? key}) : super(key: key);
 
   @override
-  _PassLogScreenState createState() => _PassLogScreenState();
+  _PassLogUserScreenState createState() => _PassLogUserScreenState();
 }
 
 String qrData = "No data found!";
 var data;
 bool hasdata = false;
 
-class _PassLogScreenState extends State<PassLogScreen> {
-  final _scanHistoryController = Get.put(ScanHistoryController());
+class _PassLogUserScreenState extends State<PassLogUserScreen> {
+  final _userHistoryController = Get.put(UserPassHistoryController());
+
+  @override
+  void initState() {
+    _userHistoryController.getScanHistoryData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +42,11 @@ class _PassLogScreenState extends State<PassLogScreen> {
         ),
         body: RefreshIndicator(
           onRefresh: () async {
-            _scanHistoryController.getScanHistoryData();
+            _userHistoryController.getScanHistoryData();
           },
           child: Container(
             child: Obx(() {
-              return _scanHistoryController.isLoading.value
+              return _userHistoryController.isLoading.value
                   ? Container(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -60,11 +67,10 @@ class _PassLogScreenState extends State<PassLogScreen> {
                     )
                   : Container(
                       child: ListView.builder(
-                          itemCount:
-                              _scanHistoryController.passLogHistory.length,
+                          itemCount: _userHistoryController.passLogHistory.length,
                           itemBuilder: (BuildContext context, int index) {
                             var passLogHistory =
-                                _scanHistoryController.passLogHistory[index];
+                                _userHistoryController.passLogHistory[index];
                             return PasslogWidget(passLogModel: passLogHistory);
                           }));
             }),

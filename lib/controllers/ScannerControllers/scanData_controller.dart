@@ -18,7 +18,6 @@ class ScanDataController extends GetxController with BaseController {
 
   @override
   void onInit() {
-
     super.onInit();
   }
 
@@ -31,12 +30,14 @@ class ScanDataController extends GetxController with BaseController {
     update();
   }
 
-  failedVerification(){
+  failedVerification() {
     Get.toNamed(Routes.Scanner);
   }
 
   Future<PassVerifyModel> getVerificationData(String token) async {
-    var passVerificationData = await _scannerService.getPassVerifiedData(token).catchError((error){
+    print(token);
+    var passVerificationData =
+        await _scannerService.getPassVerifiedData(token).catchError((error) {
       isLoading.value = false;
       update();
     });
@@ -44,22 +45,12 @@ class ScanDataController extends GetxController with BaseController {
     return passVerificationData;
   }
 
-  Future<List<PassHistoryModel>> getScanHistoryData(String token) async {
-    List<PassHistoryModel> passList = [];
-    var passVerificationData = await _scannerService.getPassVerifiedData(token).catchError((error){
-      isLoading.value = false;
-      update();
-    });
-
-    return passList;
-  }
-
   Future<bool> acceptPass() async {
-    isVerifying.value = true ;
+    isVerifying.value = true;
     Position positions = await _scannerService.determinePosition();
     await _authService.getUserDetails();
 
-    var userDetails  = await _authService.getUserDetails();
+    var userDetails = await _authService.getUserDetails();
 
     var passLog = new PassLogModel(
         latitude: positions.latitude,
@@ -71,11 +62,11 @@ class ScanDataController extends GetxController with BaseController {
       var response = await _scannerService.verifyUserScanning(passLog);
       print(response);
       Get.toNamed(Routes.Scanner);
-      isVerifying.value = false ;
+      isVerifying.value = false;
 
       return true;
     } catch (e) {
-      isVerifying.value = false ;
+      isVerifying.value = false;
       return false;
     }
   }

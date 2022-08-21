@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid_safe_app/configuration/app_config.dart';
 import 'package:covid_safe_app/models/Auth/RegistrationModel.dart';
 import 'package:covid_safe_app/service/Authentication/AuthService.dart';
+import 'package:covid_safe_app/service/Authentication/RoleService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,6 +21,7 @@ class RegistrationController extends GetxController with BaseController {
   var confirmPassword = "".obs;
   var mobileNumber = "".obs;
   var _authService = Get.find<AuthService>();
+  var  _roleService = Get.find<RoleService>();
 
   Future registerUser(BuildContext context) async {
     isRegistering.value = true;
@@ -57,6 +59,7 @@ class RegistrationController extends GetxController with BaseController {
     isRegistering.value = false;
     update();
     if (isSuccess) {
+     await _roleService.setUserRole();
       Get.offAllNamed(Routes.HOME);
     }
   }

@@ -15,8 +15,6 @@ class AuthService extends GetxService {
   bool isAuthenticated = false;
   late AuthModel authDetails;
 
-
-
   Future<bool?> logIn(LoginModel loginRequest, BuildContext context) async {
     var response = await BaseClient().post(authUrl, "login", loginRequest);
     if (response != null) {
@@ -24,9 +22,9 @@ class AuthService extends GetxService {
       final jsonData = jsonDecode(response);
       authDetails = AuthModel.fromJson(jsonData);
       var userDetails = authDetails.user;
-      setUserDetails(jsonEncode(userDetails));
+      await setUserDetails(jsonEncode(userDetails));
       if (authDetails.token != null) {
-        setAuthToken(authDetails.token!);
+       await setAuthToken(authDetails.token!);
         return true;
       }
       return false;
@@ -42,7 +40,7 @@ class AuthService extends GetxService {
       authDetails = AuthModel.fromJson(jsonData);
       var userDetails = authDetails.user;
       await setAuthToken(authDetails.token!);
-      setUserDetails(jsonEncode(userDetails));
+      await setUserDetails(jsonEncode(userDetails));
       return true;
     }
     return false;
@@ -87,7 +85,6 @@ class AuthService extends GetxService {
     String jsonsDataString = data.toString();
     final jsonData = jsonDecode(jsonsDataString);
     User userDetails = User.fromJson(jsonData);
-    print(userDetails);
     return userDetails;
   }
 }

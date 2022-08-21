@@ -27,6 +27,7 @@ class AccountController extends GetxController {
   }
 
   goToUserDetails() {
+    print("user_page");
     Get.toNamed(Routes.User);
   }
 

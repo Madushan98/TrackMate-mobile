@@ -66,6 +66,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                         fontWeight: FontWeight.w300,
                                         fontSize: 12)),
                               ),
+
                             ],
                           ),
                           SizedBox(
@@ -112,31 +113,30 @@ class _AccountScreenState extends State<AccountScreen> {
                                   ),
                                   Expanded(
                                     flex: 8,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            _accountController
-                                                .goToUserDetails();
-                                          },
-                                          child: Text(
-                                            "Update User Details",
+                                    child: InkWell(
+                                      onTap: (){
+                                        _accountController.goToUserDetails();
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "User Details",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 15),
                                           ),
-                                        ),
-                                        Text(
-                                          "Update User Details",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 10),
-                                        ),
-                                      ],
+                                          Text(
+                                            "Update User Details",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 10),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Expanded(
