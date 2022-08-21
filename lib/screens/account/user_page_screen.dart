@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../widgets/CustomFormField.dart';
 import '../../widgets/infoTitle.dart';
 
@@ -16,12 +17,12 @@ class _UserPageState extends State<UserPage> {
     return Scaffold(
       body: SingleChildScrollView(
           child: Container(
-            height: _size.height,
+        height: _size.height,
         child: Column(
           children: [
-           SizedBox(
-             height: 100,
-           ),
+            SizedBox(
+              height: 100,
+            ),
             Align(
               alignment: Alignment.bottomLeft,
               child: InfomationTitleWidget(
@@ -29,10 +30,10 @@ class _UserPageState extends State<UserPage> {
               ),
             ),
             FormFieldWidget(
-              type: 'text',
+              type: TextInputType.text,
               hint: 'NationalId',
               editableChange: () {},
-              isEditable: false,
+              isEditable: false.obs,
               onChangeFunction: () {},
               value: "982351030V",
             ),
@@ -42,14 +43,14 @@ class _UserPageState extends State<UserPage> {
             Align(
               alignment: Alignment.bottomLeft,
               child: InfomationTitleWidget(
-                value: 'First Name',
+                value: 'Full Name',
               ),
             ),
             FormFieldWidget(
-              type: 'text',
-              hint: 'NationalId',
+              type: TextInputType.text,
+              hint: 'Full Name',
               editableChange: () {},
-              isEditable: false,
+              isEditable: false.obs,
               onChangeFunction: () {},
               value: "Ranasinghe",
             ),
@@ -59,55 +60,20 @@ class _UserPageState extends State<UserPage> {
             Align(
               alignment: Alignment.bottomLeft,
               child: InfomationTitleWidget(
-                value: 'First Name',
+                value: 'Contact Number',
               ),
             ),
             FormFieldWidget(
-              type: 'text',
-              hint: 'NationalId',
+              type: TextInputType.number,
+              hint: 'Contact Number',
               editableChange: () {},
-              isEditable: false,
+              isEditable: false.obs,
               onChangeFunction: () {},
-              value: "Madushan",
+              value: "0712313131",
             ),
             SizedBox(
               height: 10,
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: InfomationTitleWidget(
-                value: 'First Name',
-              ),
-            ),
-            FormFieldWidget(
-              type: 'text',
-              hint: 'NationalId',
-              editableChange: () {},
-              isEditable: false,
-              onChangeFunction: () {},
-              value: "18",
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: InfomationTitleWidget(
-                value: 'First Name',
-              ),
-            ),
-            FormFieldWidget(
-              type: 'text',
-              hint: 'NationalId',
-              editableChange: () {},
-              isEditable: false,
-              onChangeFunction: () {},
-              value: "074231313",
-            ),
-            SizedBox(
-              height: 60,
-            ),
-
           ],
         ),
       )),

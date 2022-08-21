@@ -8,12 +8,18 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import '../../configuration/app_config.dart';
 import '../../configuration/base_client.dart';
+import '../../models/PassData/PassVerifcationRequestModel.dart';
 
 class ScannerService extends GetxService {
-  Future<PassVerifyModel> getPassVerifiedData(String passId) async {
-    var token = await BaseClient().get(
+  Future<PassVerifyModel> getPassVerifiedData(String passVerifyToken) async {
+
+    var passVerificationRequestModel = new PassVerifcationRequestModel(
+      passToken: passVerifyToken
+    );
+
+    var token = await BaseClient().post(
       passUrl,
-      "Pass/Verify?createPassRequest=$passId",
+      "Pass/Verify", passVerificationRequestModel
     );
     final jsonData = jsonDecode(token);
     var passVerificationData = PassVerifyModel.fromJson(jsonData);
@@ -21,22 +27,22 @@ class ScannerService extends GetxService {
     return passVerificationData;
   }
 
-
   Future<List<PassHistoryModel>> getPassHistoryData(String scannerId) async {
-    List<PassHistoryModel> passList = [];
-    var data = await BaseClient().get(
+    List<PassHistoryModel> passHistoryList = [];
+    var response = await BaseClient().get(
       passUrl,
       "PassLog-scanner/$scannerId",
     );
-    final jsonData = jsonDecode(data);
-
-
-
-    var passScanData = PassVerifyModel.fromJson(jsonData);
-
-    return passList;
+    if (response != null) {
+      final jsonData = jsonDecode(response);
+      var passData = jsonData;
+      passData.forEach((element) {
+        passHistoryList.add(PassHistoryModel.fromJson(element));
+      });
+      return passHistoryList;
+    }
+    return [];
   }
-
 
   Future<Position> determinePosition() async {
     bool serviceEnabled;

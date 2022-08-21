@@ -11,4 +11,5 @@ abstract class Routes {
   static const Scanner = '/scanner';
   static const ScanData = '/scanner-data';
   static const User = '/user';
+  static const CreatePass = "/create-pass";
 }

@@ -94,7 +94,7 @@ class _DashBordState extends State<DashBord> {
                               Expanded(
                                 flex: 6,
                                 child: Text(
-                                  "Your Account is not yet Activated",
+                                  "Set Your Vaccine Details",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600),
@@ -108,10 +108,10 @@ class _DashBordState extends State<DashBord> {
                                     color: Colors.white,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(5.0),
                                     child: Center(
                                       child: Text(
-                                        "Activate",
+                                        "Set",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w600),

@@ -1,4 +1,5 @@
 import 'package:covid_safe_app/controllers/screenControllers/dashBoardController.dart';
+import 'package:covid_safe_app/screens/Scanner/Pages/passLog_screen.dart';
 import 'package:covid_safe_app/screens/home/Pages/account_screen.dart';
 import 'package:covid_safe_app/screens/home/Pages/dashBord_screen.dart';
 import 'package:covid_safe_app/screens/home/Pages/location_screen.dart';
@@ -11,6 +12,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Pages/notification_screen.dart';
+import 'Pages/passLog_user_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,8 +35,9 @@ class _HomePageState extends State<HomePage>
   static List<Widget> _pages = <Widget>[
     DashBord(),
     LocationScreen(),
-    NotificationScreen(),
+    // NotificationScreen(),
     PassScreen(),
+    PassLogUserScreen(),
     AccountScreen()
   ];
 
@@ -72,19 +75,26 @@ class _HomePageState extends State<HomePage>
                   ),
                   label: 'Map',
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.notifications_rounded,
-                    size: 25,
-                  ),
-                  label: "Alert",
-                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(
+                //     Icons.notifications_rounded,
+                //     size: 25,
+                //   ),
+                //   label: "Alert",
+                // ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     Icons.qr_code_2_rounded,
                     size: 25,
                   ),
                   label: 'Pass',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.history,
+                    size: 25,
+                  ),
+                  label: 'Logs',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
