@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       AuthFormFieldWidget(
                         size: _size,
-                        initValue: "982351123V",
+                        initValue: "",
                         icon: Icons.person,
                         hintText: "ID Number",
                         updateValue: (value) {
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       AuthFormFieldWidget(
                         size: _size,
-                        initValue: "a",
+                        initValue: "",
                         setObscureText: true,
                         icon: Icons.remove_red_eye_outlined,
                         hintText: "Password",
