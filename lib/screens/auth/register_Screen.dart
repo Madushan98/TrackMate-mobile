@@ -161,6 +161,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   icon: Icons.remove_red_eye_outlined,
                                   hintText: "Password",
                                   textInputType: TextInputType.visiblePassword,
+                                  customValidator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter details';
+                                    } else if (value.length < 6)
+                                      return 'Too short';
+                                  },
                                   updateValue: (value) {
                                     _registerController.password.value = value;
                                     _registerController.update();
@@ -172,6 +178,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   icon: Icons.remove_red_eye_outlined,
                                   hintText: "Confirm Password",
                                   textInputType: TextInputType.visiblePassword,
+                                  customValidator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter details';
+                                    } else if (value.length < 6)
+                                      return 'Too short';
+                                  },
                                   updateValue: (value) {
                                     _registerController.confirmPassword.value =
                                         value;
@@ -203,7 +215,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             )
                           : CustomNumphoricWidget(
                               onTap: () {
-                                  _registerController.registerUser(context);
+                                _registerController.registerUser(context);
                               },
                             ),
                       Expanded(
