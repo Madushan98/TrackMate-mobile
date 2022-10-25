@@ -52,4 +52,14 @@ PassHistoryModel copyWith({  double? latitude,
     return map;
   }
 
+  getTimeOnly(){
+    String time = this.logTime?.split("T").last ?? "0.00" ;
+    return time ;
+  }
+
+  getDateOnly(){
+    String time = this.logTime?.split("T").first ?? "0.00" ;
+    return time ;
+  }
+
 }
