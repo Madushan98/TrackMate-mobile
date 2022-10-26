@@ -21,21 +21,34 @@ class _LocationScreenState extends State<LocationScreen> {
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> _markers = {};
   bool isMapVisible = true;
-  bool _isloading = true;
-
+  bool _isloading = false;
+  final Set<Polyline> _polyline = {};
+  List<LatLng> latLen = [
+    LatLng(19.0759837, 72.8776559),
+    LatLng(28.679079, 77.069710),
+    LatLng(26.850000, 80.949997),
+    LatLng(24.879999, 74.629997),
+    LatLng(16.166700, 74.833298),
+    LatLng(12.971599, 77.594563),
+  ];
   @override
   void initState() {
+
+
     getLocations();
     super.initState();
   }
 
 
   getLocations(){
-    print(_locationController.passLogHistory.length);
-    _locationController.passLogHistory.forEach((element) {
-      double lat = element.latitude ?? 6.60006;
-      double lang = element.longitude ?? 72.1313;
+    List<LatLng> latLen = [
+
+    ];
+     _locationController.passLogHistory.forEach((element) {
+      double lat = element.latitude ?? 6.927079;
+      double lang = element.longitude ??  79.861244;
       print("$lat");
+      latLen.add(LatLng(lat,lang));
       _markers.add(Marker(
           markerId: MarkerId('id1 ${element.logTime}'),
           position:
@@ -46,8 +59,20 @@ class _LocationScreenState extends State<LocationScreen> {
               onTap: () async {
 
               })));
+
+
     });
-    if (mounted) {
+
+     _polyline.add(
+         Polyline(
+           width: 3,
+           polylineId: PolylineId('1'),
+           points: latLen,
+           color: Colors.blue,
+         )
+     );
+
+     if (mounted) {
       setState(() {
         _isloading = false;
       });
@@ -78,6 +103,7 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
               zoom: 10,
             ),
+            polylines: _polyline,
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
 
