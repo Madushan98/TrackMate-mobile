@@ -11,7 +11,6 @@ class LocationController extends GetxController {
 
   @override
   void onInit() {
-
     getScanHistoryByDate(  DateTime.now());
     super.onInit();
   }
