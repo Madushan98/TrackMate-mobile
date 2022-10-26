@@ -43,7 +43,7 @@ class PasslogWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      "LogTime - ${passLogModel.logTime}",
+                                      "Date          - ${passLogModel.getDateOnly()}",
                                       style: TextStyle(
                                         overflow: TextOverflow.fade,
                                         fontSize: 14,
@@ -57,7 +57,7 @@ class PasslogWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      "UserId - ${passLogModel.userId}" ,
+                                      "LogTime        - ${passLogModel.getTimeOnly()}",
                                       style: TextStyle(
                                         overflow: TextOverflow.fade,
                                         fontSize: 14,
@@ -65,6 +65,23 @@ class PasslogWidget extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      "ScannerID   - ${passLogModel.scannerId}",
+                                      style: TextStyle(
+                                        overflow: TextOverflow.fade,
+                                        fontSize: 14,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
                                   ),
                                   SizedBox(
                                     height: 5,

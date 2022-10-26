@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../configuration/app_constants.dart';
 import '../../../configuration/styles/colors.dart';
+import '../../../controllers/LocationController/location_controller.dart';
 import '../../../controllers/accountController/account_controller.dart';
 import '../../../widgets/counter.dart';
 import '../../../widgets/profileAvatar.dart';
@@ -20,6 +21,7 @@ class DashBord extends StatefulWidget {
 
 class _DashBordState extends State<DashBord> {
   final _accountController = Get.put(AccountController());
+  final _locationController = Get.put(LocationController());
 
   @override
   Widget build(BuildContext context) {
