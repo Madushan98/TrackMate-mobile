@@ -69,6 +69,20 @@ class PasslogWidget extends StatelessWidget {
                                   SizedBox(
                                     height: 5,
                                   ),
+                                  Container(
+                                    child: Text(
+                                      "ScannerID   - ${passLogModel.scannerId}",
+                                      style: TextStyle(
+                                        overflow: TextOverflow.fade,
+                                        fontSize: 14,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
                                   SizedBox(
                                     height: 5,
                                   ),
