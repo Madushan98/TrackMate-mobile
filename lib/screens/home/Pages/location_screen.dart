@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import '../../../models/PassData/PassHistoryModel.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -33,46 +32,34 @@ class _LocationScreenState extends State<LocationScreen> {
   ];
   @override
   void initState() {
-
-
     getLocations();
     super.initState();
   }
 
-
-  getLocations(){
-    List<LatLng> latLen = [
-
-    ];
-     _locationController.passLogHistory.forEach((element) {
+  getLocations() {
+    List<LatLng> latLen = [];
+    _locationController.passLogHistory.forEach((element) {
       double lat = element.latitude ?? 6.927079;
-      double lang = element.longitude ??  79.861244;
+      double lang = element.longitude ?? 79.861244;
       print("$lat");
-      latLen.add(LatLng(lat,lang));
+      latLen.add(LatLng(lat, lang));
       _markers.add(Marker(
           markerId: MarkerId('id1 ${element.logTime}'),
-          position:
-          LatLng(lat, lang),
+          position: LatLng(lat, lang),
           infoWindow: InfoWindow(
               title: element.logTime,
               snippet: element.scannerId,
-              onTap: () async {
-
-              })));
-
-
+              onTap: () async {})));
     });
 
-     _polyline.add(
-         Polyline(
-           width: 3,
-           polylineId: PolylineId('1'),
-           points: latLen,
-           color: Colors.blue,
-         )
-     );
+    _polyline.add(Polyline(
+      width: 3,
+      polylineId: PolylineId('1'),
+      points: latLen,
+      color: Colors.blue,
+    ));
 
-     if (mounted) {
+    if (mounted) {
       setState(() {
         _isloading = false;
       });
@@ -86,47 +73,46 @@ class _LocationScreenState extends State<LocationScreen> {
         body: SafeArea(
             child: _isloading
                 ? Container(
-                color: Colors.white,
-                child: CircularProgressIndicator())
+                    color: Colors.white, child: CircularProgressIndicator())
                 : Stack(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          child: GoogleMap(
-            markers: _markers,
-            mapType: MapType.normal,
-            myLocationEnabled: true,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(
-                6.927079,
-                79.861244,
-              ),
-              zoom: 10,
-            ),
-            polylines: _polyline,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: GoogleMap(
+                          markers: _markers,
+                          mapType: MapType.normal,
+                          myLocationEnabled: true,
+                          initialCameraPosition: CameraPosition(
+                            target: LatLng(
+                              6.927079,
+                              79.861244,
+                            ),
+                            zoom: 10,
+                          ),
+                          polylines: _polyline,
+                          onMapCreated: (GoogleMapController controller) {
+                            _controller.complete(controller);
 
-              Timer(Duration(seconds: 1), () {
-                setState(() {
-                  isMapVisible = false;
-                });
-              });
-            },
-          ),
-        ),
-        Visibility(
-          visible: isMapVisible,
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.grey[100],
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-        )
-      ],
-    )));
+                            Timer(Duration(seconds: 1), () {
+                              setState(() {
+                                isMapVisible = false;
+                              });
+                            });
+                          },
+                        ),
+                      ),
+                      Visibility(
+                        visible: isMapVisible,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.grey[100],
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      )
+                    ],
+                  )));
   }
 }
