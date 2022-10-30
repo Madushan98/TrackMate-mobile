@@ -7,6 +7,8 @@ enum Environment { dev, stage, prod }
 
 Map<String, dynamic> _config = {};
 
+//setting environments for the application
+
 void setEnvironment(Environment env) {
   switch (env) {
     case Environment.dev:
@@ -32,10 +34,11 @@ dynamic get authUrl {
 dynamic get passUrl {
   return _config[_passUrl];
 }
+
 dynamic get covidDataUrl {
   return _config[_covidDataUrl];
 }
-
+// Development Environment Endpoint Urls
 Map<String, dynamic> devConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
   _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
@@ -43,6 +46,7 @@ Map<String, dynamic> devConstants = {
   _covidDataUrl: "https://www.hpb.health.gov.lk/api/get-current-statistical",
 };
 
+// Sage Environment Endpoint Urls
 Map<String, dynamic> stageConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
   _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
@@ -50,6 +54,7 @@ Map<String, dynamic> stageConstants = {
   _covidDataUrl: "https://www.hpb.health.gov.lk/api/get-current-statistical"
 };
 
+// Production Environment Endpoint Urls
 Map<String, dynamic> prodConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
   _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
