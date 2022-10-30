@@ -1,8 +1,6 @@
-
-
+// Set Constant to be used in the Application
 class Constants {
-
-  static const String authToken =  "auth-token" ;
+  static const String authToken = "auth-token";
   static const String userDetails = "User";
   static const String personImage = "assets/images/user/person.png";
   static const String imageUrl =

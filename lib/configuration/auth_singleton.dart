@@ -1,5 +1,6 @@
 import 'package:covid_safe_app/configuration/authenticated_http_client.dart';
 
+// Authentication class initialization using singleton pattern
 class AuthSingleton {
   AuthSingleton._privateConstructor();
 

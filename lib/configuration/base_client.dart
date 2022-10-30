@@ -5,6 +5,7 @@ import 'package:covid_safe_app/configuration/auth_singleton.dart';
 import 'app_exceptions.dart';
 import 'package:http/http.dart' as http;
 
+// Base Client for http requests handling
 class BaseClient {
   static const int TIME_OUT_DURATION = 20;
   //GET METHOD
@@ -33,13 +34,13 @@ class BaseClient {
     var payload = json.encode(payloadObj);
     print(payload);
     try {
-      var response = await AuthSingleton()
-          .CustomHttpClient
-          .post(uri, body: payload, encoding: Encoding.getByName("utf-8"),headers: {
-        "Accept": "application/json",
-        "content-type": "application/json"
-      })
-          .timeout(Duration(seconds: TIME_OUT_DURATION));
+      var response = await AuthSingleton().CustomHttpClient.post(uri,
+          body: payload,
+          encoding: Encoding.getByName("utf-8"),
+          headers: {
+            "Accept": "application/json",
+            "content-type": "application/json"
+          }).timeout(Duration(seconds: TIME_OUT_DURATION));
       print(response.statusCode);
       return _processResponse(response);
     } on SocketException {
