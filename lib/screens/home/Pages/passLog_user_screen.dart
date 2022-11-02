@@ -1,15 +1,8 @@
-import 'package:covid_safe_app/controllers/ScannerControllers/scanHistory_controller.dart';
 import 'package:covid_safe_app/widgets/PassLogWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../controllers/ScannerControllers/scanData_controller.dart';
-import '../../../../routes/appPages.dart';
-import '../../../../service/QrGeneration/ASEncryption.dart';
 import '../../../controllers/passControllers/user_pass_history_controller.dart';
 
 class PassLogUserScreen extends StatefulWidget {

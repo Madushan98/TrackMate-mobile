@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../configuration/app_constants.dart';
-import '../../../configuration/styles/colors.dart';
 import '../../../controllers/LocationController/location_controller.dart';
 import '../../../controllers/accountController/account_controller.dart';
-import '../../../widgets/counter.dart';
 import '../../../widgets/profileAvatar.dart';
 import '../../CovidData/covid_data_screen.dart';
 
@@ -21,7 +17,6 @@ class DashBord extends StatefulWidget {
 
 class _DashBordState extends State<DashBord> {
   final _accountController = Get.put(AccountController());
-  final _locationController = Get.put(LocationController());
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +81,7 @@ class _DashBordState extends State<DashBord> {
                           ),
                         ),
                       ),
-                      Container(
+                      Container(                                                // Set Vaccine  Details Widget
                         child: Padding(
                           padding: const EdgeInsets.only(left: 20.0),
                           child: Row(
@@ -127,11 +122,6 @@ class _DashBordState extends State<DashBord> {
                           ),
                         ),
                       ),
-
-
-
-
-
                     ],
                   ),
                 ),
@@ -140,6 +130,7 @@ class _DashBordState extends State<DashBord> {
             SizedBox(
               height: 20,
             ),
+            // Covid Data  Screen  with data from health.gov API
             CovidDataScreen(),
           ],
         ),

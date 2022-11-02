@@ -4,6 +4,7 @@ import '../../../configuration/app_constants.dart';
 import '../../../controllers/accountController/account_controller.dart';
 import '../../../widgets/profileAvatar.dart';
 
+// AccountScreen StatefulWidget
 class AccountScreen extends StatefulWidget {
   const AccountScreen({Key? key}) : super(key: key);
 
@@ -66,7 +67,6 @@ class _AccountScreenState extends State<AccountScreen> {
                                         fontWeight: FontWeight.w300,
                                         fontSize: 12)),
                               ),
-
                             ],
                           ),
                           SizedBox(
@@ -114,7 +114,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   Expanded(
                                     flex: 8,
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         _accountController.goToUserDetails();
                                       },
                                       child: Column(
@@ -161,7 +161,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               //   color: Colors.white,
                               // ),
                             ),
-                            InkWell(
+                            InkWell(                                            // Detail Tabs Container
                               child: Container(
                                   child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -278,10 +278,6 @@ class _AccountScreenState extends State<AccountScreen> {
                             )),
                             Container(
                               height: 25,
-                              // child: Divider(
-                              //   thickness: 1,
-                              //   color: Colors.white,
-                              // ),
                             ),
                             InkWell(
                               onTap: () {

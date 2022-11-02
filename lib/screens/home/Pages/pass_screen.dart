@@ -1,15 +1,12 @@
 import 'package:covid_safe_app/controllers/passControllers/pass-manger_controller.dart';
-import 'package:covid_safe_app/controllers/passControllers/qr_controller.dart';
-import 'package:covid_safe_app/models/PassData/PassModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../routes/appPages.dart';
 import '../../qrCode/qr_screen.dart';
 
+// Pass Screen  Shows All  Passes of the user
 class PassScreen extends StatefulWidget {
   const PassScreen({Key? key}) : super(key: key);
 
@@ -48,7 +45,7 @@ class _PassScreenState extends State<PassScreen> {
         body: SingleChildScrollView(
           child: Obx(() {
             return RefreshIndicator(
-              onRefresh: () async{
+              onRefresh: () async {
                 _passController.getAllPasses();
               },
               child: Container(
@@ -56,8 +53,8 @@ class _PassScreenState extends State<PassScreen> {
                 children: [
                   Material(
                     elevation: 4,
-                    shape:
-                        RoundedRectangleBorder(borderRadius: BorderRadius.only()),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only()),
                     color: Colors.grey[900],
                     child: Container(
                       height: _size.height * 0.08,
