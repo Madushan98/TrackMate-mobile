@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../configuration/styles/colors.dart';
-import '../../../widgets/profileAvatar.dart';
-
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
   @override
@@ -20,15 +17,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
         children: [
           Material(
             elevation: 4,
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.only()),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.only()),
             color: Colors.grey[900],
             child: Container(
               height: _size.height * 0.08,
               width: _size.width,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

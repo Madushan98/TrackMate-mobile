@@ -49,7 +49,7 @@ dependencies:
   awesome_snackbar_content: ^0.0.8
   geolocator: ^9.0.1
   geocoding: ^2.0.5
-  flutter_polyline_points: ^0.1.0
+
 
 dev_dependencies:
   flutter_test:
