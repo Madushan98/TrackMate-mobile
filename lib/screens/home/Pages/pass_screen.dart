@@ -57,7 +57,7 @@ class _PassScreenState extends State<PassScreen> {
                         borderRadius: BorderRadius.only()),
                     color: Colors.grey[900],
                     child: Container(
-                      height: _size.height * 0.08,
+                      height: _size.height * 0.1,
                       width: _size.width,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(

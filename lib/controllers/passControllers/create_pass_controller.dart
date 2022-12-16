@@ -12,11 +12,13 @@ class CreatePassController extends GetxController {
   var isReoucuring = "".obs;
   var startDate = "".obs;
   var endDate = "".obs;
-  var options = RxList<String>();
+  var typeOptions = RxList<String>();
+  var intervalOptions = RxList<String>();
 
   @override
   void onInit() {
-    addOptions();
+    addIntervalOptions();
+    addTypeOptions();
     getUserDetails();
     super.onInit();
   }
@@ -27,10 +29,17 @@ class CreatePassController extends GetxController {
     update();
   }
 
-  addOptions() {
-    options.add("Employee");
-    options.add("Emergency");
-    options.add("Medical");
+  addIntervalOptions() {
+    intervalOptions.add("Weekly");
+    intervalOptions.add("One Time");
+    intervalOptions.add("Daily");
+    update();
+  }
+
+  addTypeOptions() {
+    typeOptions.add("Employee");
+    typeOptions.add("Emergency");
+    typeOptions.add("Medical");
     update();
   }
 }

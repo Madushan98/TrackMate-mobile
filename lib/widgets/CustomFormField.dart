@@ -88,7 +88,7 @@ class FormFieldWidget extends StatelessWidget {
                         fontSize: 16),
                   ),
                 ),
-                Expanded(
+                isEditable.value ? Expanded(
                   flex: 7,
                   child: Align(
                     alignment: Alignment.centerRight,
@@ -97,6 +97,13 @@ class FormFieldWidget extends StatelessWidget {
                           editableChange(true);
                         },
                         child: Icon(Icons.edit,
+                            size: 15, color: Colors.grey[500])),
+                  )) : Expanded(
+                  flex: 7,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(
+                        child: Icon(Icons.lock,
                             size: 15, color: Colors.grey[500])),
                   ),
                 )
