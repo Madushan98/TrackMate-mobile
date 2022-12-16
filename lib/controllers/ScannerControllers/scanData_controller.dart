@@ -41,7 +41,6 @@ class ScanDataController extends GetxController with BaseController {
       isLoading.value = false;
       update();
     });
-
     return passVerificationData;
   }
 

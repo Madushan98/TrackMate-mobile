@@ -1,4 +1,5 @@
 import 'package:covid_safe_app/controllers/ScannerControllers/scanData_controller.dart';
+import 'package:covid_safe_app/screens/Scanner/Pages/verify_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -56,8 +57,8 @@ class _ScanDataScreenState extends State<ScanDataScreen> {
                               ),
                             ),
                           ),
-                        )
-                      : _scanDataController.scanData.value.nationalId ==null
+                        ) :_scanDataController.isVerifying.value == false ?
+                _scanDataController.scanData.value.nationalId ==null
                           ?Container(
                     height: _size.height * 0.8,
                     child: Center(
@@ -226,78 +227,57 @@ class _ScanDataScreenState extends State<ScanDataScreen> {
                                         ),
                                       ],
                                     ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                        "Accept Pass"
+                                    ),
+                                  ),
+                                  Container(
+                                    height: _size.height * 0.1,
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Center(
+                                              child: CustomNumphoricWidget(
+                                                sizeVal: 40,
+                                                icon: Icons.check,
+                                                onTap: () {
+                                                  _scanDataController.acceptPass();
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(flex: 2, child: Container()),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: CustomNumphoricWidget(
+                                              sizeVal: 40,
+                                              icon: Icons.close,
+                                              onTap: () {
+                                                _scanDataController.failedVerification();
+                                              },
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
-                            ) ,
-                  _scanDataController.isVerifying.value ? Container(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 20),
-                          child: Container(
-                            height: _size.height * 0.8,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircularProgressIndicator(
-                                  color: Colors.grey[900],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            "Accept Pass"
-                          ),
-                        )
-                      ],
-                    ),
-                  ) : Container(),
-
-
-                  Container(
-                    height: _size.height * 0.1,
-                  ),
-                  Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: CustomNumphoricWidget(
-                              sizeVal: 40,
-                              icon: Icons.close,
-                              onTap: () {
-                         _scanDataController.failedVerification();
-                              },
-                            ),
-                          ),
-                        ),
-                        Expanded(flex: 1, child: Container()),
-                        Expanded(
-                          flex: 1,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Center(
-                              child: CustomNumphoricWidget(
-                                sizeVal: 40,
-                                icon: Icons.check,
-                                onTap: () {
-                                  _scanDataController.acceptPass();
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                            )
+                      :
+                  VerifyingScreen(),
                 ],
               ),
             ),
