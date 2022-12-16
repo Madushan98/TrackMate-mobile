@@ -24,52 +24,24 @@ class _NewPassScreenState extends State<NewPassScreen> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
-    return Scaffold(body: Container(
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            "Create Pass",
+            style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        body: Container(
       child: SingleChildScrollView(
         child: Obx(() {
           return Container(
               child: Column(
             children: [
-              Material(
-                elevation: 4,
-                shape:
-                    RoundedRectangleBorder(borderRadius: BorderRadius.only()),
-                color: Colors.grey[900],
-                child: Container(
-                  height: _size.height * 0.08,
-                  width: _size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Text(
-                            "Digital Pass",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              Icons.qr_code,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+
               _createPassController.isLoading.value
                   ? Container()
                   : Container(
@@ -87,11 +59,12 @@ class _NewPassScreenState extends State<NewPassScreen> {
                               hint: "National Id"),
                           DropDownSelectWidget(
                             onChangedFunction: (value) {
-                              _createPassController.selectedOption.value = value;
+                              _createPassController.selectedOption.value =
+                                  value;
                               _createPassController.update();
                             },
                             size: _size,
-                            dropDownList: _createPassController.options,
+                            dropDownList: _createPassController.typeOptions,
                             topic: 'Select Option',
                           ),
                           DropDownSelectWidget(
@@ -100,8 +73,8 @@ class _NewPassScreenState extends State<NewPassScreen> {
                               _createPassController.update();
                             },
                             size: _size,
-                            dropDownList: _createPassController.options,
-                            topic: 'Is reOccurring',
+                            dropDownList: _createPassController.intervalOptions,
+                            topic: 'Reoccur',
                           ),
                           AuthFormDatePickerWidget(
                             size: _size,
