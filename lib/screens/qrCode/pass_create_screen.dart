@@ -1,3 +1,4 @@
+import 'package:covid_safe_app/models/PassData/NewPassModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,121 +31,140 @@ class _NewPassScreenState extends State<NewPassScreen> {
           title: Text(
             "Create Pass",
             style: GoogleFonts.roboto(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
         body: Container(
-      child: SingleChildScrollView(
-        child: Obx(() {
-          return Container(
-              child: Column(
-            children: [
-
-              _createPassController.isLoading.value
-                  ? Container()
-                  : Container(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 40,
+          child: SingleChildScrollView(
+            child: Obx(() {
+              return Container(
+                  child: Column(
+                children: [
+                  Container(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                              ),
+                              FormFieldWidget(
+                                  value: _createPassController.nationalID.value,
+                                  onChangeFunction: () {},
+                                  isEditable: false.obs,
+                                  editableChange: () {},
+                                  type: TextInputType.text,
+                                  hint: "National Id"),
+                              DropDownSelectWidget(
+                                onChangedFunction: (value) {
+                                  _createPassController.selectedOption.value =
+                                      value;
+                                  _createPassController.update();
+                                },
+                                size: _size,
+                                dropDownList: _createPassController.typeOptions,
+                                topic: 'Select Option',
+                              ),
+                              DropDownSelectWidget(
+                                onChangedFunction: (value) {
+                                  _createPassController.selectedInterval.value =
+                                      value;
+                                  _createPassController.update();
+                                },
+                                size: _size,
+                                dropDownList:
+                                    _createPassController.intervalOptions,
+                                topic: 'Reoccur',
+                              ),
+                              AuthFormDatePickerWidget(
+                                size: _size,
+                                hintText: 'Start Date',
+                                icon: Icons.calendar_month,
+                                updateValue: (value) {
+                                  var date =
+                                      DateTime.parse(value.toString()).toUtc();
+                                  _createPassController.startDate.value =
+                                      date.toString();
+                                  _createPassController.update();
+                                },
+                              ),
+                              AuthFormDatePickerWidget(
+                                size: _size,
+                                hintText: 'End Date',
+                                icon: Icons.calendar_month,
+                                updateValue: (value) {
+                                  print(value);
+                                  var date =
+                                      DateTime.parse(value.toString()).toUtc();
+                                  _createPassController.endDate.value =
+                                      date.toString();
+                                  _createPassController.update();
+                                },
+                              ),
+                            ],
                           ),
-                          FormFieldWidget(
-                              value: _createPassController.nationalID.value,
-                              onChangeFunction: () {},
-                              isEditable: false.obs,
-                              editableChange: () {},
-                              type: TextInputType.text,
-                              hint: "National Id"),
-                          DropDownSelectWidget(
-                            onChangedFunction: (value) {
-                              _createPassController.selectedOption.value =
-                                  value;
-                              _createPassController.update();
-                            },
-                            size: _size,
-                            dropDownList: _createPassController.typeOptions,
-                            topic: 'Select Option',
+                        ),
+                  SizedBox(
+                    height: 80,
+                  ),
+                  _createPassController.isLoading.value
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              CircularProgressIndicator(
+                                color: Colors.grey[900],
+                              ),
+                            ],
                           ),
-                          DropDownSelectWidget(
-                            onChangedFunction: (value) {
-                              _createPassController.isReoucuring.value = value;
-                              _createPassController.update();
-                            },
-                            size: _size,
-                            dropDownList: _createPassController.intervalOptions,
-                            topic: 'Reoccur',
-                          ),
-                          AuthFormDatePickerWidget(
-                            size: _size,
-                            hintText: 'Start Date',
-                            icon: Icons.calendar_month,
-                            updateValue: (value) {
-                              _createPassController.startDate = value;
-                              _createPassController.update();
-                            },
-                          ),
-                          AuthFormDatePickerWidget(
-                            size: _size,
-                            hintText: 'End Date',
-                            icon: Icons.calendar_month,
-                            updateValue: (value) {
-                              _createPassController.endDate = value;
-                              _createPassController.update();
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-              SizedBox(
-                height: 80,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Material(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: double.infinity,
-                      height: _size.height * 0.075,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            InkWell(
+                        )
+                      : Align(
+                          alignment: Alignment.bottomRight,
+                          child: Material(
+                            child: InkWell(
                               onTap: () {},
-                              child: Text(
-                                'SAVE & CONTINUE',
-                                style: GoogleFonts.manrope(
-                                  textStyle: TextStyle(
-                                      color: Colors.black,
-                                      height: 1.4,
-                                      letterSpacing: .4,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
+                              child: Container(
+                                width: double.infinity,
+                                height: _size.height * 0.075,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 20.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      InkWell(
+                                        onTap: () {
+                                          _createPassController.createPass(context);
+                                        },
+                                        child: Text(
+                                          'SAVE & CONTINUE',
+                                          style: GoogleFonts.manrope(
+                                            textStyle: TextStyle(
+                                                color: Colors.black,
+                                                height: 1.4,
+                                                letterSpacing: .4,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 8.0),
+                                      Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Colors.black,
+                                        size: 16.0,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            SizedBox(width: 8.0),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                              size: 16.0,
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ));
-        }),
-      ),
-    ));
+                ],
+              ));
+            }),
+          ),
+        ));
   }
 }

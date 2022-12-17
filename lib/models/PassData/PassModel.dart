@@ -16,21 +16,22 @@
 
 class PassModel {
   PassModel({
-      this.id, 
-      this.generatedDateTime, 
-      this.isValid, 
-      this.passCategory, 
-      this.from, 
-      this.to, 
-      this.isApproved, 
-      this.isReoccurring, 
-      this.startDateTime, 
-      this.endDateTime, 
-      this.userId, 
-      this.nationalId, 
-      this.fullName, 
-      this.primaryContactNumber, 
-      this.isVerifiedUser,});
+    this.id,
+    this.generatedDateTime,
+    this.isValid,
+    this.passCategory,
+    this.from,
+    this.to,
+    this.isApproved,
+    this.isReoccurring,
+    this.startDateTime,
+    this.endDateTime,
+    this.userId,
+    this.nationalId,
+    this.fullName,
+    this.primaryContactNumber,
+    this.isVerifiedUser,
+  });
 
   PassModel.fromJson(dynamic json) {
     id = json['id'];
@@ -64,37 +65,40 @@ class PassModel {
   String? fullName;
   String? primaryContactNumber;
   bool? isVerifiedUser;
-PassModel copyWith({  String? id,
-  String? generatedDateTime,
-  bool? isValid,
-  String? passCategory,
-  String? from,
-  String? to,
-  bool? isApproved,
-  bool? isReoccurring,
-  String? startDateTime,
-  String? endDateTime,
-  String? userId,
-  String? nationalId,
-  String? fullName,
-  String? primaryContactNumber,
-  bool? isVerifiedUser,
-}) => PassModel(  id: id ?? this.id,
-  generatedDateTime: generatedDateTime ?? this.generatedDateTime,
-  isValid: isValid ?? this.isValid,
-  passCategory: passCategory ?? this.passCategory,
-  from: from ?? this.from,
-  to: to ?? this.to,
-  isApproved: isApproved ?? this.isApproved,
-  isReoccurring: isReoccurring ?? this.isReoccurring,
-  startDateTime: startDateTime ?? this.startDateTime,
-  endDateTime: endDateTime ?? this.endDateTime,
-  userId: userId ?? this.userId,
-  nationalId: nationalId ?? this.nationalId,
-  fullName: fullName ?? this.fullName,
-  primaryContactNumber: primaryContactNumber ?? this.primaryContactNumber,
-  isVerifiedUser: isVerifiedUser ?? this.isVerifiedUser,
-);
+  PassModel copyWith({
+    String? id,
+    String? generatedDateTime,
+    bool? isValid,
+    String? passCategory,
+    String? from,
+    String? to,
+    bool? isApproved,
+    bool? isReoccurring,
+    String? startDateTime,
+    String? endDateTime,
+    String? userId,
+    String? nationalId,
+    String? fullName,
+    String? primaryContactNumber,
+    bool? isVerifiedUser,
+  }) =>
+      PassModel(
+        id: id ?? this.id,
+        generatedDateTime: generatedDateTime ?? this.generatedDateTime,
+        isValid: isValid ?? this.isValid,
+        passCategory: passCategory ?? this.passCategory,
+        from: from ?? this.from,
+        to: to ?? this.to,
+        isApproved: isApproved ?? this.isApproved,
+        isReoccurring: isReoccurring ?? this.isReoccurring,
+        startDateTime: startDateTime ?? this.startDateTime,
+        endDateTime: endDateTime ?? this.endDateTime,
+        userId: userId ?? this.userId,
+        nationalId: nationalId ?? this.nationalId,
+        fullName: fullName ?? this.fullName,
+        primaryContactNumber: primaryContactNumber ?? this.primaryContactNumber,
+        isVerifiedUser: isVerifiedUser ?? this.isVerifiedUser,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -114,5 +118,6 @@ PassModel copyWith({  String? id,
     map['isVerifiedUser'] = isVerifiedUser;
     return map;
   }
-
 }
+
+class CreatePassModel {}

@@ -235,7 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text("New User?",
+                                          Text("Already have an Account?",
                                               style: TextStyle(
                                                   color: Colors.grey[500],
                                                   fontWeight: FontWeight.w400,

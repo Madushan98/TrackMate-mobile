@@ -1,3 +1,4 @@
+import 'package:covid_safe_app/helper/dateTime.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -53,14 +54,16 @@ class _AuthFormDatePickerWidgetState extends State<AuthFormDatePickerWidget> {
                         DatePicker.showDatePicker(context,
                             showTitleActions: true,
                             minTime: DateTime(1998, 3, 5),
-                            maxTime: DateTime(2019, 6, 7), onChanged: (date) {
+                            maxTime: DateTime(2025, 6, 7), onChanged: (date) {
                           print('change $date');
                         }, onConfirm: (date) {
-
-                          dateTime = date;
+                          setState(() {
+                            dateTime = date;
+                          });
+                          widget.updateValue(date);
                         }, currentTime: DateTime.now(), locale: LocaleType.en);
                       },
-                      child: Text(dateTime.toString(),
+                      child: Text(getDateTime(dateTime),
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w300,
