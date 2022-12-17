@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:covid_safe_app/models/PassData/NewPassModel.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
 import '../../configuration/app_config.dart';
@@ -18,7 +20,7 @@ class PassService extends GetxService {
     );
     if (response != null) {
       final jsonData = jsonDecode(response);
-      var passData = jsonData ;
+      var passData = jsonData;
       passData.forEach((element) {
         passList.add(PassModel.fromJson(element));
       });
@@ -38,7 +40,6 @@ class PassService extends GetxService {
     return passToken.passToken;
   }
 
-
   Future<List<PassHistoryModel>> getPassHistoryData(String scannerId) async {
     List<PassHistoryModel> passHistoryList = [];
     var response = await BaseClient().get(
@@ -54,5 +55,25 @@ class PassService extends GetxService {
       return passHistoryList;
     }
     return [];
+  }
+
+  Future<bool> createPass(NewPassModel passModel) async {
+    try {
+      var response = await BaseClient().post(
+        passUrl,
+        "Pass",
+        passModel,
+      );
+      if (response != null) {
+        return true;
+      }
+      return true;
+    } catch (e) {
+      print(e);
+
+    }
+
+
+    return false;
   }
 }
