@@ -49,6 +49,12 @@ class CreatePassController extends GetxController {
   }
 
   Future<void> createPass(BuildContext context) async {
+
+    if(nationalID.value == "" || selectedOption.value == "" || startDate.value == "" || endDate.value == ""){
+      LoadingStatus.showErroDialog(description: "Please fill all the fields", context: context);
+      return;
+    }
+
     isLoading.value = true;
     print(isLoading.value);
     NewPassModel passModel = new NewPassModel(

@@ -1,4 +1,5 @@
 import 'package:covid_safe_app/controllers/passControllers/pass-manger_controller.dart';
+import 'package:covid_safe_app/helper/dateTime.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -155,7 +156,7 @@ class _PassScreenState extends State<PassScreen> {
                                                           fontSize: 20),
                                                     ),
                                                     Text(
-                                                        "Generated Time : ${pass.generatedDateTime}")
+                                                        "Generated Time : ${getDateTimeString(pass.generatedDateTime!)}")
                                                   ],
                                                 ),
                                               ),
