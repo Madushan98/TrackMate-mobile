@@ -1,8 +1,8 @@
 import 'package:covid_safe_app/controllers/authController/reg_controller.dart';
-import 'package:covid_safe_app/widgets/AuthFormDatePicker.dart';
-import 'package:covid_safe_app/widgets/AuthFormFiled.dart';
-import 'package:covid_safe_app/widgets/AuthNumberPicker.dart';
-import 'package:covid_safe_app/widgets/AuthPasswordField.dart';
+import 'package:covid_safe_app/widgets/FormWidgets/AuthFormDatePicker.dart';
+import 'package:covid_safe_app/widgets/FormWidgets/AuthFormFiled.dart';
+import 'package:covid_safe_app/widgets/FormWidgets/AuthNumberPicker.dart';
+import 'package:covid_safe_app/widgets/FormWidgets/AuthPasswordField.dart';
 import 'package:covid_safe_app/widgets/AuthToggleButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
