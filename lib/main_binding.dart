@@ -5,6 +5,7 @@ import 'package:covid_safe_app/service/CovidData/CovidDataService.dart';
 import 'package:covid_safe_app/service/Location/LocationService.dart';
 import 'package:covid_safe_app/service/Pass/PassService.dart';
 import 'package:covid_safe_app/service/Scanner/ScannerService.dart';
+import 'package:covid_safe_app/service/User/UserService.dart';
 import 'package:get/get.dart';
 
 
@@ -18,5 +19,6 @@ class MainBinding extends Bindings {
     Get.put(ScannerService());
     Get.put(CovidDataService());
     Get.put(LocationService());
+    Get.put(UserService());
   }
 }

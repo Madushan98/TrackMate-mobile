@@ -14,6 +14,7 @@ class CreatePassController extends GetxController {
   var selectedOption = "".obs;
   var isReoucuring = false.obs;
   var selectedInterval = "".obs;
+  var organization = "".obs;
   var startDate = "".obs;
   var endDate = "".obs;
   var typeOptions = RxList<String>();
@@ -50,13 +51,14 @@ class CreatePassController extends GetxController {
 
   Future<void> createPass(BuildContext context) async {
 
-    if(nationalID.value == "" || selectedOption.value == "" || startDate.value == "" || endDate.value == ""){
-      LoadingStatus.showErroDialog(description: "Please fill all the fields", context: context);
+    if (nationalID.value == "" ||
+        selectedOption.value == "" ||
+        startDate.value == "" ||
+        endDate.value == "") {
+      LoadingStatus.showErroDialog(
+          description: "Please fill all the fields", context: context);
       return;
     }
-
-    isLoading.value = true;
-    print(isLoading.value);
     NewPassModel passModel = new NewPassModel(
         nationalId: nationalID.value,
         passCategory: selectedOption.value,
@@ -67,17 +69,20 @@ class CreatePassController extends GetxController {
         to: "",
         from: "",
         data: []);
-
+    print(passModel.toString());
+    isLoading.value = true;
+    print(isLoading.value);
 
     var _passService = Get.find<PassService>();
-     bool success = await _passService.createPass(passModel);
-     if(success){
-       isLoading.value = false;
-       Get.back();
-     }else{
-        isLoading.value = false;
-        LoadingStatus.showErroDialog(description: "Pass Creation Failed",context: context);
-     }
+    bool success = await _passService.createPass(passModel);
+    if (success) {
+      isLoading.value = false;
+      Get.back();
+    } else {
+      isLoading.value = false;
+      LoadingStatus.showErroDialog(
+          description: "Pass Creation Failed", context: context);
+    }
     update();
   }
 }

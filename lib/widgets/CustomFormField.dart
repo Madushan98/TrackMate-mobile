@@ -41,7 +41,7 @@ class FormFieldWidget extends StatelessWidget {
                     flex: 10,
                     child: TextFormField(
                       keyboardType: type,
-                      initialValue: value,
+                      initialValue: value == "" ? null : value,
                       decoration: InputDecoration(
                         border: InputBorder.none,
 
@@ -60,7 +60,7 @@ class FormFieldWidget extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: InkWell(
                       onTap: () {
-                        editableChange(false);
+                        editableChange();
                       },
                       child: Text(
                         'Ok',
@@ -94,7 +94,7 @@ class FormFieldWidget extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: InkWell(
                         onTap: () {
-                          editableChange(true);
+                          editableChange();
                         },
                         child: Icon(Icons.edit,
                             size: 15, color: Colors.grey[500])),

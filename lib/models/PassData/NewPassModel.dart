@@ -10,15 +10,16 @@
 
 class NewPassModel {
   NewPassModel({
-      this.nationalId, 
-      this.isReoccurring, 
-      this.passCategory, 
-      this.from, 
-      this.to, 
-      this.data, 
-      this.startDateTime, 
-      this.endDateTime, 
-      this.userId,});
+    this.nationalId,
+    this.isReoccurring,
+    this.passCategory,
+    this.from,
+    this.to,
+    this.data,
+    this.startDateTime,
+    this.endDateTime,
+    this.userId,
+  });
 
   NewPassModel.fromJson(dynamic json) {
     nationalId = json['nationalId'];
@@ -45,25 +46,28 @@ class NewPassModel {
   String? startDateTime;
   String? endDateTime;
   String? userId;
-NewPassModel copyWith({  String? nationalId,
-  bool? isReoccurring,
-  String? passCategory,
-  String? from,
-  String? to,
-  List<Data>? data,
-  String? startDateTime,
-  String? endDateTime,
-  String? userId,
-}) => NewPassModel(  nationalId: nationalId ?? this.nationalId,
-  isReoccurring: isReoccurring ?? this.isReoccurring,
-  passCategory: passCategory ?? this.passCategory,
-  from: from ?? this.from,
-  to: to ?? this.to,
-  data: data ?? this.data,
-  startDateTime: startDateTime ?? this.startDateTime,
-  endDateTime: endDateTime ?? this.endDateTime,
-  userId: userId ?? this.userId,
-);
+  NewPassModel copyWith({
+    String? nationalId,
+    bool? isReoccurring,
+    String? passCategory,
+    String? from,
+    String? to,
+    List<Data>? data,
+    String? startDateTime,
+    String? endDateTime,
+    String? userId,
+  }) =>
+      NewPassModel(
+        nationalId: nationalId ?? this.nationalId,
+        isReoccurring: isReoccurring ?? this.isReoccurring,
+        passCategory: passCategory ?? this.passCategory,
+        from: from ?? this.from,
+        to: to ?? this.to,
+        data: data ?? this.data,
+        startDateTime: startDateTime ?? this.startDateTime,
+        endDateTime: endDateTime ?? this.endDateTime,
+        userId: userId ?? this.userId,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['nationalId'] = nationalId;
@@ -80,6 +84,10 @@ NewPassModel copyWith({  String? nationalId,
     return map;
   }
 
+  @override
+  String toString() {
+    return 'NewPassModel{nationalId: $nationalId, isReoccurring: $isReoccurring, passCategory: $passCategory, from: $from, to: $to, data: $data, startDateTime: $startDateTime, endDateTime: $endDateTime, userId: $userId}';
+  }
 }
 
 /// key : "string"
@@ -87,8 +95,9 @@ NewPassModel copyWith({  String? nationalId,
 
 class Data {
   Data({
-      this.key, 
-      this.value,});
+    this.key,
+    this.value,
+  });
 
   Data.fromJson(dynamic json) {
     key = json['key'];
@@ -96,16 +105,18 @@ class Data {
   }
   String? key;
   String? value;
-Data copyWith({  String? key,
-  String? value,
-}) => Data(  key: key ?? this.key,
-  value: value ?? this.value,
-);
+  Data copyWith({
+    String? key,
+    String? value,
+  }) =>
+      Data(
+        key: key ?? this.key,
+        value: value ?? this.value,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['key'] = key;
     map['value'] = value;
     return map;
   }
-
 }
