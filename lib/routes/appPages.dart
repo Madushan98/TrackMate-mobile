@@ -10,7 +10,7 @@ import '../screens/SplashScreen/splashScreeen.dart';
 import '../screens/account/user_page_screen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/register_Screen.dart';
-import '../screens/qrCode/pass_create_screen.dart';
+import '../screens/home/Pages/pass_create_screen.dart';
 import 'guards/primaryGuard.dart';
 part 'appRoutes.dart';
 

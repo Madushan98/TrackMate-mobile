@@ -2,6 +2,7 @@ import 'package:covid_safe_app/controllers/authController/reg_controller.dart';
 import 'package:covid_safe_app/widgets/AuthFormDatePicker.dart';
 import 'package:covid_safe_app/widgets/AuthFormFiled.dart';
 import 'package:covid_safe_app/widgets/AuthNumberPicker.dart';
+import 'package:covid_safe_app/widgets/AuthPasswordField.dart';
 import 'package:covid_safe_app/widgets/AuthToggleButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -172,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     _registerController.update();
                                   },
                                 ),
-                                AuthFormFieldWidget(
+                                AuthPasswordFieldWidget(
                                   size: _size,
                                   setObscureText: true,
                                   icon: Icons.remove_red_eye_outlined,

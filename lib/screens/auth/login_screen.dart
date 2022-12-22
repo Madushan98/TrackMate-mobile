@@ -1,5 +1,6 @@
 import 'package:covid_safe_app/controllers/authController/login_controller.dart';
 import 'package:covid_safe_app/widgets/AuthFormFiled.dart';
+import 'package:covid_safe_app/widgets/AuthPasswordField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
@@ -57,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                           _loginController.update();
                         },
                       ),
-                      AuthFormFieldWidget(
+                      AuthPasswordFieldWidget(
                         size: _size,
                         initValue: "",
                         setObscureText: true,

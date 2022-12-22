@@ -10,6 +10,8 @@ class PassManagerController extends GetxController {
   var _authService = Get.find<AuthService>();
   var passList = <PassModel>[].obs;
   var isLoading = false.obs;
+  var acceptedPassList = <PassModel>[].obs;
+  var pendingPassList = <PassModel>[].obs;
 
   @override
   void onInit() {
