@@ -5,7 +5,6 @@ import 'package:covid_safe_app/service/Authentication/RoleService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import 'main_binding.dart';
 
 

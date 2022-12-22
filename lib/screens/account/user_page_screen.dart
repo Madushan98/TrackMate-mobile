@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../controllers/accountController/account_controller.dart';
 import '../../widgets/CustomFormField.dart';
 import '../../widgets/infoTitle.dart';
 
@@ -11,6 +12,9 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+
+  final _accountController = Get.put(AccountController());
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -35,7 +39,7 @@ class _UserPageState extends State<UserPage> {
               editableChange: () {},
               isEditable: false.obs,
               onChangeFunction: () {},
-              value: "982351030V",
+              value: _accountController.natId.value,
             ),
             SizedBox(
               height: 5,
@@ -52,7 +56,7 @@ class _UserPageState extends State<UserPage> {
               editableChange: () {},
               isEditable: false.obs,
               onChangeFunction: () {},
-              value: "Ranasinghe",
+              value: _accountController.userName.value,
             ),
             SizedBox(
               height: 5,
@@ -69,7 +73,7 @@ class _UserPageState extends State<UserPage> {
               editableChange: () {},
               isEditable: false.obs,
               onChangeFunction: () {},
-              value: "0712313131",
+              value: _accountController.userRxn.value?.primaryContactNumber ?? 'No Info',
             ),
             SizedBox(
               height: 10,

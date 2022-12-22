@@ -87,4 +87,21 @@ class AuthService extends GetxService {
     User userDetails = User.fromJson(jsonData);
     return userDetails;
   }
+
+  Future<User> reloadUserDetails() async {
+    final storage = new FlutterSecureStorage();
+    var data = await storage.read(key: Constants.userDetails);
+    String jsonsDataString = data.toString();
+    final jsonData = jsonDecode(jsonsDataString);
+    User userDetails = User.fromJson(jsonData);
+    var response = await BaseClient().get(userUrl, "user/" + userDetails.id!);
+    if (response != null) {
+      final jsonData = jsonDecode(response);
+      User userDetails = User.fromJson(jsonData);
+      await setUserDetails(jsonEncode(userDetails));
+      return userDetails;
+    }
+    return User();
+  }
+
 }
