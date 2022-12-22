@@ -51,6 +51,28 @@ class BaseClient {
     }
   }
 
+  Future<dynamic> put(String baseUrl, String api, dynamic payloadObj) async {
+    var uri = Uri.parse(baseUrl + api);
+    print(uri);
+    var payload = json.encode(payloadObj);
+    print(payload);
+    try {
+      var response = await AuthSingleton().CustomHttpClient.put(uri,
+          body: payload,
+          encoding: Encoding.getByName("utf-8"),
+          headers: {
+            "Accept": "application/json",
+            "content-type": "application/json"
+          }).timeout(Duration(seconds: TIME_OUT_DURATION));
+      print(response.statusCode);
+      return _processResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet connection', uri.toString());
+    } on TimeoutException {
+      throw ApiNotRespondingException(
+          'API not responded in time', uri.toString());
+    }
+  }
   //DELETE
   //OTHER
 
