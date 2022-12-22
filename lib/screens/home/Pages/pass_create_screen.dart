@@ -1,4 +1,6 @@
+import 'package:covid_safe_app/controllers/passControllers/pass-manger_controller.dart';
 import 'package:covid_safe_app/models/PassData/NewPassModel.dart';
+import 'package:covid_safe_app/screens/home/verify_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,10 +9,11 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import '../../controllers/passControllers/create_pass_controller.dart';
-import '../../widgets/AuthFormDatePicker.dart';
-import '../../widgets/CustomFormField.dart';
-import '../../widgets/drop_down_selector_widget.dart';
+import '../../../configuration/app_constants.dart';
+import '../../../controllers/passControllers/create_pass_controller.dart';
+import '../../../widgets/FormWidgets/AuthFormDatePicker.dart';
+import '../../../widgets/CustomFormField.dart';
+import '../../../widgets/drop_down_selector_widget.dart';
 
 class NewPassScreen extends StatefulWidget {
   const NewPassScreen({Key? key}) : super(key: key);
@@ -21,6 +24,7 @@ class NewPassScreen extends StatefulWidget {
 
 class _NewPassScreenState extends State<NewPassScreen> {
   final _createPassController = Get.put(CreatePassController());
+  final _passController = Get.put(PassManagerController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
         body: Container(
           child: SingleChildScrollView(
             child: Obx(() {
-              return Container(
+              return  _passController.isVerified.value == VerificationStatus.verified ?  Container(
                   child: Column(
                 children: [
                   Container(
@@ -71,7 +75,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
                                 },
                                 size: _size,
                                 dropDownList:
-                                    _createPassController.intervalOptions,
+                                _createPassController.intervalOptions,
                                 topic: 'Reoccur',
                               ),
                               AuthFormDatePickerWidget(
@@ -162,7 +166,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
                           ),
                         ),
                 ],
-              ));
+              )) : VerificationScreen();
             }),
           ),
         ));
