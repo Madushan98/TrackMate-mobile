@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:covid_safe_app/widgets/AuthFormFiled.dart';
+import 'package:covid_safe_app/widgets/FormWidgets/AuthFormFiled.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/icon_data.dart';
