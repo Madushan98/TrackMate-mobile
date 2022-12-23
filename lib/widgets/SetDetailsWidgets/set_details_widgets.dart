@@ -1,18 +1,22 @@
+import 'package:covid_safe_app/helper/dateTime.dart';
+import 'package:covid_safe_app/models/User/VaccinationDetails.dart';
+import 'package:covid_safe_app/screens/account/Vaccination/vaccination_details_update_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../controllers/accountController/account_controller.dart';
 import '../../screens/account/Organization/organization_update_screen.dart';
 
 class VaccinationDetailsSetWidget extends StatelessWidget {
-  const VaccinationDetailsSetWidget({
+   VaccinationDetailsSetWidget({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       // Set Vaccine  Details Widget
       child: Padding(
         padding: const EdgeInsets.only(left: 20.0),
@@ -35,13 +39,18 @@ class VaccinationDetailsSetWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Center(
-                    child: Text(
-                      "Set",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w600),
+                child: InkWell(
+                  onTap: (){
+                    Get.to(VaccinationDetailsUpdateScreen());
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Center(
+                      child: Text(
+                        "Set",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 ),
@@ -49,6 +58,112 @@ class VaccinationDetailsSetWidget extends StatelessWidget {
             ),
             Expanded(flex: 1, child: Container())
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class VaccinationDetailsShowWidget extends StatelessWidget {
+  VaccinationDetailsShowWidget({
+    Key? key,  this.vaccinationDetails,
+  }) : super(key: key);
+
+  final VaccinationDetails? vaccinationDetails;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Container(
+        height: 90,
+        // Set Vaccine  Details Widget
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Vaccination Details",
+                      style:
+                      TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
+
+                    Expanded(flex: 1, child: Container())
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        "Vaccine Type",
+                        style:
+                        TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Center(
+                          child: Text(
+                            vaccinationDetails?.vaccineType ?? "Not Set",
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(flex: 1, child: Container())
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        "Date",
+                        style:
+                        TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Center(
+                          child: Text(
+                            getDateTimeString(vaccinationDetails!.vaccinatedDate!)
+                             ?? "Not Set",
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(flex: 1, child: Container())
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -115,6 +230,9 @@ class OrganizationDetailsSetWidget extends StatelessWidget {
     );
   }
 }
+
+
+
 
 
 class VerificationStatusPendingWidget extends StatelessWidget {
