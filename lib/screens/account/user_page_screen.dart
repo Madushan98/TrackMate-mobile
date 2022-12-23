@@ -12,7 +12,6 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-
   final _accountController = Get.put(AccountController());
 
   @override
@@ -73,7 +72,8 @@ class _UserPageState extends State<UserPage> {
               editableChange: () {},
               isEditable: false.obs,
               onChangeFunction: () {},
-              value: _accountController.userRxn.value?.primaryContactNumber ?? 'No Info',
+              value: _accountController.userRxn.value?.primaryContactNumber ??
+                  'No Info',
             ),
             SizedBox(
               height: 10,

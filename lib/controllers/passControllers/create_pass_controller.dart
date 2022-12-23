@@ -17,6 +17,7 @@ class CreatePassController extends GetxController {
   var organization = "".obs;
   var startDate = "".obs;
   var endDate = "".obs;
+  var passTitle = "".obs;
   var typeOptions = RxList<String>();
   var intervalOptions = RxList<String>();
 
@@ -66,6 +67,7 @@ class CreatePassController extends GetxController {
         startDateTime: startDate.value,
         endDateTime: endDate.value,
         userId: userID.value,
+        passTitle: passTitle.value,
         to: "",
         from: "",
         data: []);

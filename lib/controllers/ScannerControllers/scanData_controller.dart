@@ -23,9 +23,7 @@ class ScanDataController extends GetxController with BaseController {
 
   setData(String token) async {
     isLoading.value = true;
-
     scanData.value = await getVerificationData(token);
-
     isLoading.value = false;
     update();
   }
@@ -38,8 +36,6 @@ class ScanDataController extends GetxController with BaseController {
     print(token);
     var passVerificationData =
         await _scannerService.getPassVerifiedData(token).catchError((error) {
-      isLoading.value = false;
-      update();
     });
     return passVerificationData;
   }
@@ -60,12 +56,13 @@ class ScanDataController extends GetxController with BaseController {
     try {
       var response = await _scannerService.verifyUserScanning(passLog);
       print(response);
-      Get.toNamed(Routes.Scanner);
       isVerifying.value = false;
+      Get.offAndToNamed(Routes.Scanner);
 
       return true;
     } catch (e) {
       isVerifying.value = false;
+      Get.offAndToNamed(Routes.Scanner);
       return false;
     }
   }

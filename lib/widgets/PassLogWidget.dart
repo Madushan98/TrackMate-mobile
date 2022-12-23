@@ -71,7 +71,7 @@ class PasslogWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      "ScannerID   - ${passLogModel.scannerId}",
+                                      "NatId   - ${passLogModel.userNatId}",
                                       style: TextStyle(
                                         overflow: TextOverflow.fade,
                                         fontSize: 14,

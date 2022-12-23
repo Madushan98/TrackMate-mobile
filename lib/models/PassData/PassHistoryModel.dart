@@ -1,17 +1,19 @@
-/// latitude : 6.0779789
-/// longitude : 80.1930791
-/// logTime : ""
-/// scannerId : "11111111-1111-1111-1111-111111111111"
-/// userId : "11111111-1111-1111-1111-111111111111"
-/// passId : "22222221-1111-1111-1111-111111111111"
+/// latitude : 0.0
+/// longitude : 0.0
+/// logTime : "string"
+/// scannerId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+/// userId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+/// userNatId : "string"
+/// passId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 
 class PassHistoryModel {
   PassHistoryModel({
-      this.latitude, 
-      this.longitude, 
+      this.latitude,
+      this.longitude,
       this.logTime, 
       this.scannerId, 
       this.userId, 
+      this.userNatId, 
       this.passId,});
 
   PassHistoryModel.fromJson(dynamic json) {
@@ -20,6 +22,7 @@ class PassHistoryModel {
     logTime = json['logTime'];
     scannerId = json['scannerId'];
     userId = json['userId'];
+    userNatId = json['userNatId'];
     passId = json['passId'];
   }
   double? latitude;
@@ -27,18 +30,21 @@ class PassHistoryModel {
   String? logTime;
   String? scannerId;
   String? userId;
+  String? userNatId;
   String? passId;
 PassHistoryModel copyWith({  double? latitude,
   double? longitude,
   String? logTime,
   String? scannerId,
   String? userId,
+  String? userNatId,
   String? passId,
 }) => PassHistoryModel(  latitude: latitude ?? this.latitude,
   longitude: longitude ?? this.longitude,
   logTime: logTime ?? this.logTime,
   scannerId: scannerId ?? this.scannerId,
   userId: userId ?? this.userId,
+  userNatId: userNatId ?? this.userNatId,
   passId: passId ?? this.passId,
 );
   Map<String, dynamic> toJson() {
@@ -48,6 +54,7 @@ PassHistoryModel copyWith({  double? latitude,
     map['logTime'] = logTime;
     map['scannerId'] = scannerId;
     map['userId'] = userId;
+    map['userNatId'] = userNatId;
     map['passId'] = passId;
     return map;
   }

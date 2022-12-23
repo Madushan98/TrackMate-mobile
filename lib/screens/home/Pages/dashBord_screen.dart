@@ -125,7 +125,13 @@ class _DashBordState extends State<DashBord> {
                                           ),
                                         ),
                                       ),
-                                      VaccinationDetailsSetWidget(),
+                                      _accountController.isVaccinated.value
+                                          ? VaccinationDetailsShowWidget(
+                                              vaccinationDetails:
+                                                  _accountController
+                                                      .vaccinationDetails.value,
+                                            )
+                                          : VaccinationDetailsSetWidget(),
                                     ],
                                   ),
                                 ),
@@ -149,25 +155,14 @@ class _DashBordState extends State<DashBord> {
   }
 }
 
-
 Widget getVerificationStatus(String status) {
-  if(status == VerificationStatus.notVerified) {
-    return Expanded(
-        flex: 1,
-        child: OrganizationDetailsSetWidget());
-  }else if (status == VerificationStatus.verified) {
-    return Expanded(
-        flex: 1,
-        child: Container());
-  }else if(status == VerificationStatus.pending) {
-    return Expanded(
-        flex: 1,
-        child: VerificationStatusPendingWidget());
-  }
-  else {
+  if (status == VerificationStatus.notVerified) {
+    return Expanded(flex: 1, child: OrganizationDetailsSetWidget());
+  } else if (status == VerificationStatus.verified) {
+    return Expanded(flex: 1, child: Container());
+  } else if (status == VerificationStatus.pending) {
+    return Expanded(flex: 1, child: VerificationStatusPendingWidget());
+  } else {
     return Container();
   }
-
-
 }
-
