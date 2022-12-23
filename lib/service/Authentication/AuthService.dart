@@ -5,11 +5,13 @@ import 'package:covid_safe_app/configuration/base_client.dart';
 import 'package:covid_safe_app/models/Auth/LoginModel.dart';
 import 'package:covid_safe_app/models/Auth/AuthModel.dart';
 import 'package:covid_safe_app/models/Auth/RegistrationModel.dart';
+import 'package:covid_safe_app/models/User/createVaccinationData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/state_manager.dart';
 
 import '../../models/User/UserModel.dart';
+import '../../models/User/VaccinationDetails.dart';
 
 class AuthService extends GetxService {
   bool isAuthenticated = false;
@@ -50,6 +52,7 @@ class AuthService extends GetxService {
     var response = await BaseClient().get(authUrl, "user");
     print(response);
   }
+
 
   Future<void> isTokenAvailable() async {
     final storage = new FlutterSecureStorage();
@@ -103,5 +106,31 @@ class AuthService extends GetxService {
     }
     return User();
   }
+
+  Future<bool>  updateVaccinationDetails(CreateVaccinationData createVaccinationData) async {
+    var response = await BaseClient().put(userUrl, "user/vaccination-details", createVaccinationData);
+    if (response != null) {
+      final jsonData = jsonDecode(response);
+      print(jsonData);
+      return true ;
+    }
+    return false ;
+
+  }
+
+  Future<List<VaccinationDetails>> getVaccineData(String userId) async {
+    var response = await BaseClient().get(userUrl, "user/vaccination-details/" + userId);
+    if (response != null) {
+      List<VaccinationDetails> vaccinationDetails = [];
+      final jsonData = jsonDecode(response);
+      print(jsonData);
+      jsonData.forEach((v) {
+        vaccinationDetails.add(VaccinationDetails.fromJson(v));
+      });
+      return vaccinationDetails ;
+    }
+    return [] ;
+  }
+
 
 }

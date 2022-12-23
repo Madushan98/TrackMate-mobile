@@ -1,3 +1,4 @@
+import 'package:covid_safe_app/screens/account/Organization/organization_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../configuration/app_constants.dart';
@@ -14,6 +15,11 @@ class AccountScreen extends StatefulWidget {
 
 class _AccountScreenState extends State<AccountScreen> {
   final _accountController = Get.put(AccountController());
+
+  initState() {
+    super.initState();
+    _accountController.getUserOrganization();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +167,8 @@ class _AccountScreenState extends State<AccountScreen> {
                               //   color: Colors.white,
                               // ),
                             ),
-                            InkWell(                                            // Detail Tabs Container
+                            InkWell(
+                              // Detail Tabs Container
                               child: Container(
                                   child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,25 +187,31 @@ class _AccountScreenState extends State<AccountScreen> {
                                   ),
                                   Expanded(
                                     flex: 8,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Organization Details",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 15),
-                                        ),
-                                        Text(
-                                          "Update Organization Details",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 10),
-                                        ),
-                                      ],
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.to(
+                                            () => OrganizationDetailScreen());
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Organization Details",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 15),
+                                          ),
+                                          Text(
+                                            "Update Organization Details",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 10),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Expanded(
