@@ -1,14 +1,8 @@
-import 'dart:ui';
 import 'package:covid_safe_app/models/Organzation/OrganizationModel.dart';
 import 'package:covid_safe_app/models/User/updateOrganization.dart';
 import 'package:covid_safe_app/screens/LoadingStatus.dart';
-import 'package:covid_safe_app/models/PassData/NewPassModel.dart';
 import 'package:covid_safe_app/service/Authentication/AuthService.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-import '../../models/User/UserModel.dart';
-import '../../service/Pass/PassService.dart';
 import '../../service/User/UserService.dart';
 import '../accountController/account_controller.dart';
 
@@ -77,4 +71,6 @@ class OrganizationDataController extends GetxController {
           description: "Something went wrong", context: Get.context!);
     }
   }
+
+
 }

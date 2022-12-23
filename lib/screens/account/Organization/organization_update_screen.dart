@@ -22,7 +22,6 @@ class _OrganizationDetailsUpdateScreenState extends State<OrganizationDetailsUpd
 
   var _organizationController =  Get.put(OrganizationDataController());
 
-
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
