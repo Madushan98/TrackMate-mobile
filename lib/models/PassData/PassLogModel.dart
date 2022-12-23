@@ -1,47 +1,61 @@
 /// latitude : 0.0
 /// longitude : 0.0
+/// logTime : "string"
 /// scannerId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-/// passId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 /// userId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+/// userNatId : "string"
+/// passId : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 
 class PassLogModel {
   PassLogModel({
       this.latitude, 
       this.longitude, 
+      this.logTime, 
       this.scannerId, 
-      this.passId, 
-      this.userId,});
+      this.userId, 
+      this.userNatId, 
+      this.passId,});
 
   PassLogModel.fromJson(dynamic json) {
     latitude = json['latitude'];
     longitude = json['longitude'];
+    logTime = json['logTime'];
     scannerId = json['scannerId'];
-    passId = json['passId'];
     userId = json['userId'];
+    userNatId = json['userNatId'];
+    passId = json['passId'];
   }
   double? latitude;
   double? longitude;
+  String? logTime;
   String? scannerId;
-  String? passId;
   String? userId;
+  String? userNatId;
+  String? passId;
 PassLogModel copyWith({  double? latitude,
   double? longitude,
+  String? logTime,
   String? scannerId,
-  String? passId,
   String? userId,
+  String? userNatId,
+  String? passId,
 }) => PassLogModel(  latitude: latitude ?? this.latitude,
   longitude: longitude ?? this.longitude,
+  logTime: logTime ?? this.logTime,
   scannerId: scannerId ?? this.scannerId,
-  passId: passId ?? this.passId,
   userId: userId ?? this.userId,
+  userNatId: userNatId ?? this.userNatId,
+  passId: passId ?? this.passId,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['latitude'] = latitude;
     map['longitude'] = longitude;
+    map['logTime'] = logTime;
     map['scannerId'] = scannerId;
-    map['passId'] = passId;
     map['userId'] = userId;
+    map['userNatId'] = userNatId;
+    map['passId'] = passId;
     return map;
   }
 
