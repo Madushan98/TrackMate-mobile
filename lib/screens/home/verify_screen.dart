@@ -24,18 +24,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
     return  Container(
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(5.0),
           child: Center(
             child: Obx(() {
 
               if(_accountController.isVerified.value == VerificationStatus.notVerified) {
                 return Container(
-                  height: 80,
+                  height: 60,
                   child: OrganizationDetailsSetWidget(),
                 );
               }else if(_accountController.isVerified.value == VerificationStatus.pending) {
                 return Container(
-                  height: 80,
+                  height: 60,
                   child: VerificationStatusPendingWidget(),
                 );
               }
