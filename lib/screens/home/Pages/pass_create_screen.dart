@@ -13,6 +13,7 @@ import '../../../configuration/app_constants.dart';
 import '../../../controllers/passControllers/create_pass_controller.dart';
 import '../../../widgets/FormWidgets/AuthFormDatePicker.dart';
 import '../../../widgets/CustomFormField.dart';
+import '../../../widgets/FormWidgets/AuthFormFiled.dart';
 import '../../../widgets/drop_down_selector_widget.dart';
 
 class NewPassScreen extends StatefulWidget {
@@ -103,6 +104,16 @@ class _NewPassScreenState extends State<NewPassScreen> {
                                   _createPassController.update();
                                 },
                               ),
+                              AuthFormFieldWidget(
+                                size: _size,
+                                icon: Icons.edit,
+                                hintText: "Pass Details",
+                                updateValue: (value) {
+                                  _createPassController.passTitle.value =
+                                      value;
+                                  _createPassController.update();
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -166,7 +177,9 @@ class _NewPassScreenState extends State<NewPassScreen> {
                           ),
                         ),
                 ],
-              )) : VerificationScreen();
+              )) : Container(
+                  height: _size.height*0.6,
+                  child: Center(child: VerificationScreen()));
             }),
           ),
         ));
