@@ -32,6 +32,7 @@ class _PassLogScreenState extends State<PassLogScreen> {
         appBar: AppBar(
           backgroundColor: Colors.grey[900],
           title: Center(child: Text("Pass Logs")),
+          automaticallyImplyLeading: false,
         ),
         body: RefreshIndicator(
           onRefresh: () async {
