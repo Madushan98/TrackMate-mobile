@@ -29,7 +29,7 @@ class _OrganizationDetailsUpdateScreenState extends State<OrganizationDetailsUpd
         appBar: AppBar(
           backgroundColor: Colors.grey[900],
           title: Text(
-            "Add Vaccination Details",
+            "Add Organization Details",
             style: GoogleFonts.roboto(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
