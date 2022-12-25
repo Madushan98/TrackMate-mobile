@@ -95,7 +95,7 @@ class _CovidDataScreenState extends State<CovidDataScreen> {
                                       .covidData.value.data?.globalNewCases
                                       .toString() ??
                                   "No INfo",
-                              title: "Global New Case",
+                              title: "Global Total Case",
                             ),
                             Counter(
                               color: Colors.white,
@@ -119,36 +119,49 @@ class _CovidDataScreenState extends State<CovidDataScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      // Text(
-                      //   "Symptoms",
-                      //   style: TextStyle(
-                      //     fontSize: 18,
-                      //     color: kTitleTextColor,
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
-                      // SizedBox(height: 20),
-                      // SingleChildScrollView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       SymptomCard(
-                      //         image: "assets/images/headache.png",
-                      //         title: "Headache",
-                      //         isActive: true,
-                      //       ),
-                      //       SymptomCard(
-                      //         image: "assets/images/caugh.png",
-                      //         title: "Caugh",
-                      //       ),
-                      //       SymptomCard(
-                      //         image: "assets/images/fever.png",
-                      //         title: "Fever",
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.grey[900],
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 4),
+                              blurRadius: 30,
+                              color: kShadowColor,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Counter(
+                              color: Colors.white,
+                              number: _covidDataController
+                                  .covidData.value.data?.localActiveCases
+                                  .toString() ??
+                                  "No INfo",
+                              title: "Active Cases",
+                            ),
+                            Counter(
+                              color: Colors.white,
+                              number: _covidDataController
+                                  .covidData.value.data?.localDeaths
+                                  .toString() ??
+                                  "No INfo",
+                              title: "Local Deaths",
+                            ),
+                            Counter(
+                              color: Colors.white,
+                              number: _covidDataController
+                                  .covidData.value.data?.localRecovered
+                                  .toString() ??
+                                  "No INfo",
+                              title: "Local Recovered",
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(height: 20),
                     ],
                   ),
