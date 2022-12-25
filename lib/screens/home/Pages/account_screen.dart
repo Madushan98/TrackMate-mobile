@@ -1,4 +1,6 @@
+import 'package:covid_safe_app/models/User/VaccinationDetails.dart';
 import 'package:covid_safe_app/screens/account/Organization/organization_detail_screen.dart';
+import 'package:covid_safe_app/screens/account/Vaccination/vaccination_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../configuration/app_constants.dart';
@@ -189,8 +191,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                     flex: 8,
                                     child: InkWell(
                                       onTap: () {
-                                        Get.to(
-                                            () => OrganizationDetailScreen());
+
+                                            Get.to(OrganizationDetailScreen());
                                       },
                                       child: Column(
                                         crossAxisAlignment:
@@ -254,25 +256,30 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ),
                                 Expanded(
                                   flex: 8,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Vaccination Details",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 15),
-                                      ),
-                                      Text(
-                                        "Update your Vaccination Details",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 10),
-                                      ),
-                                    ],
+                                  child: InkWell(
+                                    onTap: (){
+                                          Get.to(VaccinationScreen());
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Vaccination Details",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                          "Update your Vaccination Details",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 10),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Expanded(

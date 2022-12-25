@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       return 'Enter Valid Phone Number';
                                   },
                                 ),
-                                AuthFormFieldWidget(
+                                AuthPasswordFieldWidget(
                                   size: _size,
                                   setObscureText: true,
                                   icon: Icons.remove_red_eye_outlined,

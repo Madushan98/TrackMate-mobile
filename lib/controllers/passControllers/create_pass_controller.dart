@@ -18,6 +18,8 @@ class CreatePassController extends GetxController {
   var startDate = "".obs;
   var endDate = "".obs;
   var passTitle = "".obs;
+  var from = "".obs;
+  var to = "".obs;
   var typeOptions = RxList<String>();
   var intervalOptions = RxList<String>();
 
@@ -68,8 +70,8 @@ class CreatePassController extends GetxController {
         endDateTime: endDate.value,
         userId: userID.value,
         passTitle: passTitle.value,
-        to: "",
-        from: "",
+        to: to.value,
+        from: from.value,
         data: []);
     print(passModel.toString());
     isLoading.value = true;

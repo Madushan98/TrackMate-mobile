@@ -114,11 +114,31 @@ class _NewPassScreenState extends State<NewPassScreen> {
                                   _createPassController.update();
                                 },
                               ),
+                              AuthFormFieldWidget(
+                                size: _size,
+                                icon: Icons.edit,
+                                hintText: "From",
+                                updateValue: (value) {
+                                  _createPassController.from.value =
+                                      value;
+                                  _createPassController.update();
+                                },
+                              ),
+                              AuthFormFieldWidget(
+                                size: _size,
+                                icon: Icons.edit,
+                                hintText: "To",
+                                updateValue: (value) {
+                                  _createPassController.to.value =
+                                      value;
+                                  _createPassController.update();
+                                },
+                              ),
                             ],
                           ),
                         ),
                   SizedBox(
-                    height: 80,
+                    height: 40,
                   ),
                   _createPassController.isLoading.value
                       ? Padding(

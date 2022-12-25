@@ -64,11 +64,22 @@ class SplashState extends State<Splash> {
             SizedBox(
               height: size.height * 0.03,
             ),
-            Container(
-              height: 80,
-              width: 80,
-              child: Image.asset('assets/images/welcome/corona_splash.png',
-              ),
+            Center(
+              child: Container(
+                height: 200,
+                width: 300,
+                child: Container(
+                  child: Center(
+                    child: Text(
+                      "Covid Pass Generator And Authenticator",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                ),
             ),
             SizedBox(
               height: size.height * 0.03,

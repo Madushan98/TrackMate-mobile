@@ -239,12 +239,12 @@ class PassCardWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "${pass.passCategory}",
+                        "${pass.passCategory} Pass",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       Text(
-                          "Generated Time : ${getDateTimeString(pass.generatedDateTime!)}")
+                          " Valid :  ${getDateTimeString(pass.endDateTime!)}"),
                     ],
                   ),
                 ),

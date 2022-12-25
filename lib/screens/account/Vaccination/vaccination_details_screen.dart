@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../controllers/accountController/account_controller.dart';
 import '../../../widgets/CustomFormField.dart';
 import '../../../widgets/infoTitle.dart';
 
@@ -12,6 +13,8 @@ class VaccinationScreen extends StatefulWidget {
 }
 
 class _VaccinationScreenState extends State<VaccinationScreen> {
+  final _accountController = Get.put(AccountController());
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -36,7 +39,7 @@ class _VaccinationScreenState extends State<VaccinationScreen> {
                   editableChange: () {},
                   isEditable: false.obs,
                   onChangeFunction: () {},
-                  value: "982351030V",
+                  value: _accountController.natId.value,
                 ),
                 SizedBox(
                   height: 5,
@@ -44,16 +47,16 @@ class _VaccinationScreenState extends State<VaccinationScreen> {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: InfomationTitleWidget(
-                    value: 'Full Name',
+                    value: 'Vaccination Type',
                   ),
                 ),
                 FormFieldWidget(
                   type: TextInputType.text,
-                  hint: 'Full Name',
+                  hint: 'Vaccination Type',
                   editableChange: () {},
                   isEditable: false.obs,
                   onChangeFunction: () {},
-                  value: "Ranasinghe",
+                  value: _accountController.vaccinationDetails.value.vaccineType ?? " No Info ",
                 ),
                 SizedBox(
                   height: 5,
@@ -61,16 +64,33 @@ class _VaccinationScreenState extends State<VaccinationScreen> {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: InfomationTitleWidget(
-                    value: 'Contact Number',
+                    value: 'Vaccination Place',
                   ),
                 ),
                 FormFieldWidget(
                   type: TextInputType.number,
-                  hint: 'Contact Number',
+                  hint: 'Vaccination Place',
                   editableChange: () {},
                   isEditable: false.obs,
                   onChangeFunction: () {},
-                  value: "0712313131",
+                  value: _accountController.vaccinationDetails.value.vaccinatedPlace ?? "No Info",
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: InfomationTitleWidget(
+                    value: 'Dose No',
+                  ),
+                ),
+                FormFieldWidget(
+                  type: TextInputType.number,
+                  hint: 'Dose',
+                  editableChange: () {},
+                  isEditable: false.obs,
+                  onChangeFunction: () {},
+                  value: _accountController.vaccinationDetails.value.vaccineDoseNumber.toString() ?? "No Info",
                 ),
                 SizedBox(
                   height: 10,
