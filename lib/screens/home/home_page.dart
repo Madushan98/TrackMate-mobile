@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../controllers/accountController/account_controller.dart';
 import 'Pages/notification_screen.dart';
 import 'Pages/passLog_user_screen.dart';
 
@@ -22,7 +23,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   var selectedIndex = 0;
-
+  final _accountController = Get.put(AccountController());
   final DashBoardController dashBoardController =
       Get.put(DashBoardController());
 
@@ -116,6 +117,9 @@ class _HomePageState extends State<HomePage>
               showSelectedLabels: true,
               showUnselectedLabels: true,
               onTap: (value) {
+               if(value == 0) {
+                 _accountController.loadData();
+               }
                 onItemTap(value);
               },
             ),

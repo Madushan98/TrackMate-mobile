@@ -77,7 +77,7 @@ class VaccinationDetailsShowWidget extends StatelessWidget {
     return  Padding(
       padding: const EdgeInsets.only(top: 15),
       child: Container(
-        height: 90,
+        height: 60,
         // Set Vaccine  Details Widget
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0),
@@ -107,8 +107,22 @@ class VaccinationDetailsShowWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Center(
+                          child: Text(
+                            "Dose - " + (vaccinationDetails?.vaccineDoseNumber.toString() ?? "Not Set"),
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 6,
                       child: Text(
-                        "Vaccine Type",
+                        "Date- " + (getDateTimeString(vaccinationDetails!.vaccinatedDate!)
+                            ?? "Not Set"),
                         style:
                         TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
                       ),
@@ -116,7 +130,7 @@ class VaccinationDetailsShowWidget extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(2.0),
                         child: Center(
                           child: Text(
                             vaccinationDetails?.vaccineType ?? "Not Set",
@@ -126,42 +140,12 @@ class VaccinationDetailsShowWidget extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     Expanded(flex: 1, child: Container())
                   ],
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Text(
-                        "Date",
-                        style:
-                        TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            getDateTimeString(vaccinationDetails!.vaccinatedDate!)
-                             ?? "Not Set",
-                            style: TextStyle(
-                                color: Colors.white, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(flex: 1, child: Container())
-                  ],
-                ),
-              ),
+
             ],
           ),
         ),

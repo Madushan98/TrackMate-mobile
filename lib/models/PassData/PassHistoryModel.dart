@@ -8,13 +8,14 @@
 
 class PassHistoryModel {
   PassHistoryModel({
-      this.latitude,
-      this.longitude,
-      this.logTime, 
-      this.scannerId, 
-      this.userId, 
-      this.userNatId, 
-      this.passId,});
+    this.latitude,
+    this.longitude,
+    this.logTime,
+    this.scannerId,
+    this.userId,
+    this.userNatId,
+    this.passId,
+  });
 
   PassHistoryModel.fromJson(dynamic json) {
     latitude = json['latitude'];
@@ -32,21 +33,24 @@ class PassHistoryModel {
   String? userId;
   String? userNatId;
   String? passId;
-PassHistoryModel copyWith({  double? latitude,
-  double? longitude,
-  String? logTime,
-  String? scannerId,
-  String? userId,
-  String? userNatId,
-  String? passId,
-}) => PassHistoryModel(  latitude: latitude ?? this.latitude,
-  longitude: longitude ?? this.longitude,
-  logTime: logTime ?? this.logTime,
-  scannerId: scannerId ?? this.scannerId,
-  userId: userId ?? this.userId,
-  userNatId: userNatId ?? this.userNatId,
-  passId: passId ?? this.passId,
-);
+  PassHistoryModel copyWith({
+    double? latitude,
+    double? longitude,
+    String? logTime,
+    String? scannerId,
+    String? userId,
+    String? userNatId,
+    String? passId,
+  }) =>
+      PassHistoryModel(
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        logTime: logTime ?? this.logTime,
+        scannerId: scannerId ?? this.scannerId,
+        userId: userId ?? this.userId,
+        userNatId: userNatId ?? this.userNatId,
+        passId: passId ?? this.passId,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['latitude'] = latitude;
@@ -59,14 +63,18 @@ PassHistoryModel copyWith({  double? latitude,
     return map;
   }
 
-  getTimeOnly(){
-    String time = this.logTime?.split("T").last ?? "0.00" ;
-    return time ;
+  getTimeOnly() {
+    String time = this.logTime?.split("T").last ?? "0.00";
+    return time;
   }
 
-  getDateOnly(){
-    String time = this.logTime?.split("T").first ?? "0.00" ;
-    return time ;
+  getDateOnly() {
+    String time = this.logTime?.split("T").first ?? "0.00";
+    return time;
   }
 
+  @override
+  String toString() {
+    return 'PassHistoryModel{latitude: $latitude, longitude: $longitude, logTime: $logTime, scannerId: $scannerId, userId: $userId, userNatId: $userNatId, passId: $passId}';
+  }
 }
