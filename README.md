@@ -29,11 +29,9 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-  * [Online demo](#online-demo)
-* [Awesome projects](#Awesome-projects)
+  * [Demo](#online-demo)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
-* [Sponsors](#sponsors)
 * [License](#license)
 
 
