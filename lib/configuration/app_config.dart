@@ -52,29 +52,32 @@ dynamic get userUrl {
 // Development Environment Endpoint Urls
 Map<String, dynamic> devConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _authUrl: "https://20spkdv425.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _passUrl: "https://d3681tmgoa.execute-api.us-east-1.amazonaws.com/api/v1/",
   _covidDataUrl: "https://www.hpb.health.gov.lk/api/get-current-statistical",
-  _organizationUrl: "https://ozitcsoqqa.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _userUrl: "https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _organizationUrl:
+      "https://96nqb0zl4l.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _userUrl: "https://lp4hqtxqyj.execute-api.us-east-1.amazonaws.com/api/v1/",
 };
 
 // Sage Environment Endpoint Urls
 Map<String, dynamic> stageConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _authUrl: "https://20spkdv425.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _passUrl: "https://d3681tmgoa.execute-api.us-east-1.amazonaws.com/api/v1/",
   _covidDataUrl: "https://www.hpb.health.gov.lk/api/get-current-statistical",
-  _organizationUrl: "https://ozitcsoqqa.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _userUrl: "https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _organizationUrl:
+      "https://96nqb0zl4l.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _userUrl: "https://lp4hqtxqyj.execute-api.us-east-1.amazonaws.com/api/v1/",
 };
 
 // Production Environment Endpoint Urls
 Map<String, dynamic> prodConstants = {
   _baseUrl: "https://localhost:7005/api/v1/",
-  _authUrl: "https://5jr99q3aq7.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _passUrl: "https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _authUrl: "https://20spkdv425.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _passUrl: "https://d3681tmgoa.execute-api.us-east-1.amazonaws.com/api/v1/",
   _covidDataUrl: "https://www.hpb.health.gov.lk/api/get-current-statistical",
-  _organizationUrl: "https://ozitcsoqqa.execute-api.us-west-2.amazonaws.com/api/v1/",
-  _userUrl: "https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1/",
+  _organizationUrl:
+      "https://96nqb0zl4l.execute-api.us-east-1.amazonaws.com/api/v1/",
+  _userUrl: "https://lp4hqtxqyj.execute-api.us-east-1.amazonaws.com/api/v1/",
 };
